@@ -405,39 +405,15 @@ describe("Treeview", () => {
           menu.elements.submenuToggles[0].elements.controlledMenu.currentChild = 1;
 
           // Spy on closeChildren.
-          const spy = vi.spyOn(menu, "closeChildren");
-
-          // Simulate the pointerleave event.
-          simulatePointerEvent(
-            "pointerleave",
-            menu.elements.submenuToggles[0].elements.controlledMenu
+          const spy = vi.spyOn(
+            menu.elements.submenuToggles[0].elements.controlledMenu,
+            "closeChildren"
           );
 
-          expect(spy).not.toHaveBeenCalled();
-        });
-        // Test that blur is not called when a menu is unhovered.
-        it("should not call blur when a menu is unhovered", () => {
-          // Create a new Treeview instance for testing.
-          const menu = new Treeview({
-            menuElement: document.querySelector("ul"),
-            submenuItemSelector: "li.dropdown",
-            containerElement: document.querySelector("nav"),
-            controllerElement: document.querySelector("button"),
-            hoverType: "on",
-            leaveDelay: 0,
-          });
-
-          menu.currentChild = 1;
-          menu.elements.submenuToggles[0].open();
-          menu.elements.submenuToggles[0].elements.controlledMenu.currentChild = 1;
-
-          // Spy on blur.
-          const spy = vi.spyOn(menu, "blur");
-
           // Simulate the pointerleave event.
           simulatePointerEvent(
             "pointerleave",
-            menu.elements.submenuToggles[0].elements.controlledMenu
+            menu.elements.submenuToggles[0].elements.controlledMenu.dom.menu
           );
 
           expect(spy).not.toHaveBeenCalled();

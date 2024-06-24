@@ -282,28 +282,28 @@ class Treeview extends BaseMenu {
             this._clearTimeout();
           }
         });
+      }
 
-        if (this.isTopLevel) {
-          this.dom.menu.addEventListener("pointerleave", (event) => {
-            // Exit out of the event if it was not made by a mouse.
-            if (event.pointerType === "pen" || event.pointerType === "touch") {
-              return;
-            }
+      if (this.isTopLevel) {
+        this.dom.menu.addEventListener("pointerleave", (event) => {
+          // Exit out of the event if it was not made by a mouse.
+          if (event.pointerType === "pen" || event.pointerType === "touch") {
+            return;
+          }
 
-            if (this.hoverType === "on") {
-              if (this.leaveDelay > 0) {
-                this._clearTimeout();
-                this._setTimeout(() => {
-                  this.closeChildren();
-                  this.blur();
-                }, this.leaveDelay);
-              } else {
+          if (this.hoverType === "on") {
+            if (this.leaveDelay > 0) {
+              this._clearTimeout();
+              this._setTimeout(() => {
                 this.closeChildren();
                 this.blur();
-              }
+              }, this.leaveDelay);
+            } else {
+              this.closeChildren();
+              this.blur();
             }
-          });
-        }
+          }
+        });
       }
     });
   }
