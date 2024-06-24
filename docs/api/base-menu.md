@@ -740,6 +740,29 @@ Creates and initializes all menu items and submenus.
 BaseMenu._createChildMenu();
 ```
 
+### _clearTimeout <badge type="warning" text="protected" /> {#method--cleartimeout}
+
+Clears the hover timeout.
+
+```js
+BaseMenu._clearTimeout();
+```
+
+### _setTimeout <badge type="warning" text="protected" /> {#method--settimeout}
+
+Sets the hover timeout.
+
+```js
+BaseMenu._setTimeout(callback, delay);
+```
+
+#### Parameters {#method--settimeout--parameters}
+
+| Param | Type | Description | Default |
+| --- | --- | --- | --- |
+| callback | `Function` | The callback function to execute. | `undefined` |
+| delay | `number` | The delay time in milliseconds. | `undefined` |
+
 ### _handleFocus <badge type="warning" text="protected" /> {#method--handlefocus}
 
 Handles focus events throughout the menu for proper menu use.

@@ -389,11 +389,13 @@ class BaseMenuToggle {
     // Set proper focus state on the child.
     this.elements.controlledMenu.focusState = "self";
 
-    // Expand the controlled menu.
-    this._expand();
+    // Expand the controlled menu if the menu is closed.
+    if (!this.isOpen) {
+      this._expand();
 
-    // Set the open flag.
-    this.isOpen = true;
+      // Set the open flag.
+      this.isOpen = true;
+    }
   }
 
   /**
@@ -411,11 +413,13 @@ class BaseMenuToggle {
       this.elements.parentMenu.focusState = "self";
     }
 
-    // Expand the controlled menu.
-    this._expand();
+    // Expand the controlled menu if the menu is closed.
+    if (!this.isOpen) {
+      this._expand();
 
-    // Set the open flag.
-    this.isOpen = true;
+      // Set the open flag.
+      this.isOpen = true;
+    }
   }
 
   /**
@@ -430,21 +434,22 @@ class BaseMenuToggle {
    * @public
    */
   close() {
-    if (this.isOpen) {
-      // Reset controlled menu.
-      this.elements.controlledMenu.blur();
+    // Only close if the menu is open.
+    if (!this.isOpen) return;
 
-      // Set proper focus states on the parent.
-      if (this.elements.parentMenu) {
-        this.elements.parentMenu.focusState = "self";
-      }
+    // Reset controlled menu.
+    this.elements.controlledMenu.blur();
 
-      // Collapse the controlled menu.
-      this._collapse();
-
-      // Set the open flag.
-      this.isOpen = false;
+    // Set proper focus states on the parent.
+    if (this.elements.parentMenu) {
+      this.elements.parentMenu.focusState = "self";
     }
+
+    // Collapse the controlled menu.
+    this._collapse();
+
+    // Set the open flag.
+    this.isOpen = false;
   }
 
   /**

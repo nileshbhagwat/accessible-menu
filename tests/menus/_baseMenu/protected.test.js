@@ -6,7 +6,7 @@
  * _handleKeydown(), and _handleKeyup().
  */
 
-import { describe, it, expect, beforeEach, afterEach } from "vitest";
+import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
 import { twoLevel } from "../../../demo/menus.js";
 import BaseMenu from "../../../src/_baseMenu.js";
 import { initializeMenu } from "../helpers.js";
@@ -146,6 +146,53 @@ describe("BaseMenu protected methods", () => {
       expect(() => {
         menu._resetDOMElementType("menuLinks");
       }).toThrow('"menuLinks" is not a valid element type within the menu.');
+    });
+  });
+
+  // Test BaseMenu _clearTimeout().
+  describe("_clearTimeout", () => {
+    // Test that _clearTimeout clears the timeout.
+    it("should clear the timeout", () => {
+      // Create a new BaseMenu instance for testing.
+      const menu = new BaseMenu({
+        menuElement: document.querySelector("ul"),
+        submenuItemSelector: "li.dropdown",
+        containerElement: document.querySelector("nav"),
+        controllerElement: document.querySelector("button"),
+      });
+      initializeMenu(menu);
+
+      // Set up to check for _clearTimeout.
+      const spy = vi.spyOn(window, "clearTimeout");
+
+      menu._clearTimeout();
+
+      expect(spy).toHaveBeenCalledWith(menu._hoverTimeout);
+    });
+  });
+
+  // Test BaseMenu _setTimeout().
+  describe("_setTimeout", () => {
+    // Test that _setTimeout sets a timeout.
+    it("should set a timeout", () => {
+      // Create a new BaseMenu instance for testing.
+      const menu = new BaseMenu({
+        menuElement: document.querySelector("ul"),
+        submenuItemSelector: "li.dropdown",
+        containerElement: document.querySelector("nav"),
+        controllerElement: document.querySelector("button"),
+      });
+      initializeMenu(menu);
+
+      const callback = () => {};
+      const delay = 250;
+
+      // Set up to check for _setTimeout.
+      const spy = vi.spyOn(window, "setTimeout");
+
+      menu._setTimeout(callback, delay);
+
+      expect(spy).toHaveBeenCalledWith(callback, delay);
     });
   });
 });
