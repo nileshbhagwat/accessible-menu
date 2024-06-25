@@ -383,6 +383,8 @@ class TopLinkDisclosureMenu extends BaseMenu {
           if (this.elements.controller) {
             this.elements.controller.close();
           }
+
+          this.elements.rootMenu.hasOpened = false;
         }
       }
     });
@@ -417,6 +419,8 @@ class TopLinkDisclosureMenu extends BaseMenu {
    *   will be focused.
    * - When a `pointerenter` event triggers on a submenu item, and a submenu is
    *   already open, the preview method for the submenu item's toggle will be called.
+   * - When a `pointerenter` event triggers on a non-submenu item, and a submenu
+   *   is already open, the closeChildren method for the menu will be called.
    * - When a `pointerenter` event triggers on a submenu item, and no submenu is
    *   open, no submenu-specific methods will be called.
    * - When a `pointerleave` event triggers on an open submenu item that is not a
@@ -463,9 +467,6 @@ class TopLinkDisclosureMenu extends BaseMenu {
             toggle.preview();
           }
         } else if (this.hoverType === "dynamic") {
-          const isOpen = this.elements.submenuToggles.some(
-            (toggle) => toggle.isOpen
-          );
           this.currentChild = index;
 
           if (!this.isTopLevel || this.focusState !== "none") {
@@ -474,7 +475,7 @@ class TopLinkDisclosureMenu extends BaseMenu {
             this.focusCurrentChild();
           }
 
-          if (!this.isTopLevel || isOpen) {
+          if (!this.isTopLevel || this.hasOpened) {
             this.currentEvent = "mouse";
             this.elements.rootMenu.blurChildren();
             this.focusCurrentChild();
@@ -488,16 +489,24 @@ class TopLinkDisclosureMenu extends BaseMenu {
               toggle = menuItem.elements.sibling.elements.toggle;
             }
 
-            // If there is no toggle exit out of the event.
-            if (toggle === null) return;
-
-            if (this.enterDelay > 0) {
-              this._clearTimeout();
-              this._setTimeout(() => {
+            if (toggle !== null) {
+              if (this.enterDelay > 0) {
+                this._clearTimeout();
+                this._setTimeout(() => {
+                  toggle.preview();
+                }, this.enterDelay);
+              } else {
                 toggle.preview();
-              }, this.enterDelay);
+              }
             } else {
-              toggle.preview();
+              if (this.enterDelay > 0) {
+                this._clearTimeout();
+                this._setTimeout(() => {
+                  this.closeChildren();
+                }, this.enterDelay);
+              } else {
+                this.closeChildren();
+              }
             }
           }
         }
@@ -522,19 +531,13 @@ class TopLinkDisclosureMenu extends BaseMenu {
               menuItem.elements.toggle.close();
             }
           } else if (this.hoverType === "dynamic") {
-            if (!this.isTopLevel) {
-              if (this.leaveDelay > 0) {
-                this._clearTimeout();
-                this._setTimeout(() => {
-                  this.currentEvent = "mouse";
-                  menuItem.elements.toggle.close();
-                  this.focusCurrentChild();
-                }, this.leaveDelay);
-              } else {
+            if (this.leaveDelay > 0) {
+              this._clearTimeout();
+              this._setTimeout(() => {
                 this.currentEvent = "mouse";
-                menuItem.elements.toggle.close();
-                this.focusCurrentChild();
-              }
+              }, this.leaveDelay);
+            } else {
+              this.currentEvent = "mouse";
             }
           }
         });

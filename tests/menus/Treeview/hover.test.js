@@ -181,53 +181,124 @@ describe("Treeview", () => {
     describe("pointerleave", () => {
       describe("when a menu item is a submenu item", () => {
         // Test that clearTimeout is called when a menu item is unhovered.
-        it("should call clearTimeout when a menu item is unhovered", () => {
+        it("should call clearTimeout after a delay when a menu item is unhovered", () => {
           // Create a new Treeview instance for testing.
           const menu = new Treeview({
             menuElement: document.querySelector("ul"),
             containerElement: document.querySelector("nav"),
             controllerElement: document.querySelector("button"),
-            hoverType: "on",
+            hoverType: "dynamic",
           });
 
           menu.currentChild = 1;
           menu.elements.submenuToggles[0].open();
 
-          // Spy on clearTimeout.
-          const spy = vi.spyOn(menu, "_clearTimeout");
+          // Spy on the menu's clearTimeout method.
+          const spy = vi.spyOn(
+            menu.elements.submenuToggles[0].elements.controlledMenu,
+            "_clearTimeout"
+          );
 
           // Simulate the pointerleave event.
           simulatePointerEvent(
             "pointerleave",
-            menu.elements.menuItems[1].dom.link
+            menu.elements.submenuToggles[0].elements.controlledMenu.elements
+              .menuItems[1].dom.link
           );
 
-          expect(spy).toHaveBeenCalled();
+          // Advance the timers by the menu's leave delay.
+          vi.advanceTimersByTime(menu.leaveDelay);
+
+          vi.waitUntil(() => expect(spy).toHaveBeenCalled(), {
+            timeout: 10000,
+            interval: 10,
+          });
         });
-        // Test that clearTimeout is not called when a menu item is unhovered and leaveDelay is set to 0.
-        it("should not call clearTimeout when a menu item is unhovered and leaveDelay is set to 0", () => {
+        // Test that the menu's current event is set to mouse after a delay when a menu item is unhovered.
+        it("should set the menu's current event to mouse after a delay when a menu item is unhovered", () => {
           // Create a new Treeview instance for testing.
           const menu = new Treeview({
             menuElement: document.querySelector("ul"),
             containerElement: document.querySelector("nav"),
             controllerElement: document.querySelector("button"),
-            hoverType: "on",
+            hoverType: "dynamic",
+          });
+
+          menu.currentChild = 1;
+          menu.elements.submenuToggles[0].open();
+
+          // Simulate the pointerleave event.
+          simulatePointerEvent(
+            "pointerleave",
+            menu.elements.submenuToggles[0].elements.controlledMenu.elements
+              .menuItems[1].dom.link
+          );
+
+          // Advance the timers by the menu's leave delay.
+          vi.advanceTimersByTime(menu.leaveDelay);
+
+          vi.waitUntil(
+            () =>
+              expect(
+                menu.elements.submenuToggles[0].elements.controlledMenu
+                  .currentEvent
+              ).toBe("mouse"),
+            { timeout: 10000, interval: 10 }
+          );
+        });
+        // Test that clearTimeout is not called when a menu item is unhovered and leaveDelay is set to 0.
+        it("should not call clearTimeout immediately when a menu item is unhovered and leaveDelay is set to 0", () => {
+          // Create a new Treeview instance for testing.
+          const menu = new Treeview({
+            menuElement: document.querySelector("ul"),
+            containerElement: document.querySelector("nav"),
+            controllerElement: document.querySelector("button"),
+            hoverType: "dynamic",
             leaveDelay: 0,
           });
 
           menu.currentChild = 1;
           menu.elements.submenuToggles[0].open();
 
-          // Spy on clearTimeout.
-          const spy = vi.spyOn(menu, "_clearTimeout");
+          // Spy on the menu's clearTimeout method.
+          const spy = vi.spyOn(
+            menu.elements.submenuToggles[0].elements.controlledMenu,
+            "_clearTimeout"
+          );
 
           // Simulate the pointerleave event.
           simulatePointerEvent(
             "pointerleave",
-            menu.elements.menuItems[1].dom.link
+            menu.elements.submenuToggles[0].elements.controlledMenu.elements
+              .menuItems[1].dom.link
           );
 
           expect(spy).not.toHaveBeenCalled();
+        });
+        // Test that the menu's current event is set to mouse immediately when a menu item is unhovered and leaveDelay is set to 0.
+        it("should set the menu's current event to mouse immediately when a menu item is unhovered and leaveDelay is set to 0", () => {
+          // Create a new Treeview instance for testing.
+          const menu = new Treeview({
+            menuElement: document.querySelector("ul"),
+            containerElement: document.querySelector("nav"),
+            controllerElement: document.querySelector("button"),
+            hoverType: "dynamic",
+            leaveDelay: 0,
+          });
+
+          menu.currentChild = 1;
+          menu.elements.submenuToggles[0].open();
+
+          // Simulate the pointerleave event.
+          simulatePointerEvent(
+            "pointerleave",
+            menu.elements.submenuToggles[0].elements.controlledMenu.elements
+              .menuItems[1].dom.link
+          );
+
+          expect(
+            menu.elements.submenuToggles[0].elements.controlledMenu.currentEvent
+          ).toBe("mouse");
         });
       });
       describe("when a menu is the root menu", () => {
@@ -296,7 +367,7 @@ describe("Treeview", () => {
           // Advance the timers by the menu's leave delay.
           vi.advanceTimersByTime(menu.leaveDelay);
 
-          vi.waitFor(() => expect(spy).toHaveBeenCalled(), {
+          vi.waitUntil(() => expect(spy).toHaveBeenCalled(), {
             timeout: 10000,
             interval: 10,
           });
@@ -345,7 +416,7 @@ describe("Treeview", () => {
           // Advance the timers by the menu's leave delay.
           vi.advanceTimersByTime(menu.leaveDelay);
 
-          vi.waitFor(() => expect(spy).toHaveBeenCalled(), {
+          vi.waitUntil(() => expect(spy).toHaveBeenCalled(), {
             timeout: 10000,
             interval: 10,
           });
@@ -990,7 +1061,7 @@ describe("Treeview", () => {
             // Advance the timers by the menu's leave delay.
             vi.advanceTimersByTime(menu.leaveDelay);
 
-            vi.waitFor(() => expect(spy).toHaveBeenCalled(), {
+            vi.waitUntil(() => expect(spy).toHaveBeenCalled(), {
               timeout: 10000,
               interval: 10,
             });

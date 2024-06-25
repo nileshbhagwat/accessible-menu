@@ -186,6 +186,8 @@ class Treeview extends BaseMenu {
    *   will be focused.
    * - When a `pointerenter` event triggers on a submenu item, and a submenu is
    *   already open, the preview method for the submenu item's toggle will be called.
+   * - When a `pointerenter` event triggers on a non-submenu item, and a submenu
+   *   is already open, the closeChildren method for the menu will be called.
    * - When a `pointerenter` event triggers on a submenu item, and no submenu is
    *   open, no submenu-specific methods will be called.
    *
@@ -218,10 +220,6 @@ class Treeview extends BaseMenu {
             }
           }
         } else if (this.hoverType === "dynamic") {
-          const isOpen = this.elements.submenuToggles.some(
-            (toggle) => toggle.isOpen
-          );
-
           this.currentChild = index;
 
           if (!this.isTopLevel || this.focusState !== "none") {
@@ -230,18 +228,24 @@ class Treeview extends BaseMenu {
             this.focusCurrentChild();
           }
 
-          if (menuItem.isSubmenuItem && (!this.isTopLevel || isOpen)) {
+          if (!this.isTopLevel || this.hasOpened) {
             this.currentEvent = "mouse";
             this.elements.rootMenu.blurChildren();
             this.focusCurrentChild();
 
-            if (this.enterDelay > 0) {
-              this._clearTimeout();
-              this._setTimeout(() => {
+            if (menuItem.isSubmenuItem) {
+              if (this.enterDelay > 0) {
+                this._clearTimeout();
+                this._setTimeout(() => {
+                  menuItem.elements.toggle.preview();
+                }, this.enterDelay);
+              } else {
                 menuItem.elements.toggle.preview();
-              }, this.enterDelay);
+              }
             } else {
-              menuItem.elements.toggle.preview();
+              if (this.enterDelay > 0) {
+                this._clearTimeout();
+              }
             }
           }
         }
@@ -259,10 +263,13 @@ class Treeview extends BaseMenu {
               this._clearTimeout();
             }
           } else if (this.hoverType === "dynamic") {
-            if (!this.isTopLevel) {
-              if (this.leaveDelay > 0) {
-                this._clearTimeout();
-              }
+            if (this.leaveDelay > 0) {
+              this._clearTimeout();
+              this._setTimeout(() => {
+                this.currentEvent = "mouse";
+              }, this.leaveDelay);
+            } else {
+              this.currentEvent = "mouse";
             }
           }
         });
