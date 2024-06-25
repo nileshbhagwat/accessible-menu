@@ -2,6 +2,38 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.1.0](https://github.com/NickDJM/accessible-menu/compare/v4.0.1...v4.1.0) (2024-06-25)
+
+
+### Features
+
+* **menus:** add default submenuItemSelector ([7eea6cf](https://github.com/NickDJM/accessible-menu/commit/7eea6cf5d0b658e7e00cfe6de67819d0124cab34)), closes [#310](https://github.com/NickDJM/accessible-menu/issues/310)
+* **treeview:** handle aria-expanded true on load ([a01b53c](https://github.com/NickDJM/accessible-menu/commit/a01b53ca38fa1ea1a61f4af7a6fb3d83d6bf7a8d)), closes [#268](https://github.com/NickDJM/accessible-menu/issues/268)
+
+
+### Bug Fixes
+
+* **demo:** actually show active buttons ([a478d12](https://github.com/NickDJM/accessible-menu/commit/a478d12cf7d077896a6a442837771334b33d0c7a))
+* **hover:** correct dynamic hover functionality to work like in apg ([818cd3b](https://github.com/NickDJM/accessible-menu/commit/818cd3b4da07678d22bb09dfad1f9b60dd4be1ab)), closes [#303](https://github.com/NickDJM/accessible-menu/issues/303)
+* **hover:** handle cancelling hover events when re-entering menu items ([a999f22](https://github.com/NickDJM/accessible-menu/commit/a999f222e4a14d3c1c2407b19a65ddf10f77c756)), closes [#299](https://github.com/NickDJM/accessible-menu/issues/299)
+* remove deprecated code ([80a7697](https://github.com/NickDJM/accessible-menu/commit/80a7697f22fb2a8639eee0bffcb6751b1fcfc666))
+* **treeview:** move pointerleave event to proper spot ([53c9442](https://github.com/NickDJM/accessible-menu/commit/53c944246781a6e46ba60f46be20a7d9ac8a8669))
+* **treeview:** only close submenus when menu recieves pointerleave event ([dfeddbd](https://github.com/NickDJM/accessible-menu/commit/dfeddbd7842634956d5ca63abd87704b4e9e9398)), closes [#315](https://github.com/NickDJM/accessible-menu/issues/315)
+
+
+### Build System
+
+* bump @eslint/js from 8.57.0 to 9.1.1 ([e7bbef6](https://github.com/NickDJM/accessible-menu/commit/e7bbef65686b9f88cbcbdad5e6555607383defdb))
+* bump globals from 14.0.0 to 15.0.0 ([0bb5677](https://github.com/NickDJM/accessible-menu/commit/0bb5677528547751e8623dbeb1d08af073fc031b))
+* **npm:** remove @babel/eslint-parser from dev dependencies ([210eba6](https://github.com/NickDJM/accessible-menu/commit/210eba6f6bc749a21c474ac95bb9f6355c69fa34))
+* **release:** remove unused updater ([e720086](https://github.com/NickDJM/accessible-menu/commit/e7200865a85fbe20b66ddad9f01f304d12d1941d))
+
+
+### Documentation
+
+* **api:** correct information about how ids are generated ([cbc4b68](https://github.com/NickDJM/accessible-menu/commit/cbc4b683def34b848cafe4600469b1ef5be9a4a9))
+* update copyright on license ([eab322f](https://github.com/NickDJM/accessible-menu/commit/eab322f5cc34a8fe5c4f87e682643d04316b0640))
+
 ### [4.0.1](https://github.com/NickDJM/accessible-menu/compare/v4.0.0...v4.0.1) (2024-03-05)
 
 
