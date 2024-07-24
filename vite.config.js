@@ -1,6 +1,5 @@
 import { resolve } from "path";
 import { defineConfig } from "vite";
-import BrowserSync from "vite-plugin-browser-sync";
 import { fileURLToPath, URL } from "url";
 import process from "process";
 
@@ -50,7 +49,6 @@ const lib = {
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [BrowserSync()],
   build: {
     lib: lib[buildType] || lib.default,
     emptyOutDir: false,
