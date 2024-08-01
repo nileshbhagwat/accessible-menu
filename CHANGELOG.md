@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.1.1](https://github.com/NickDJM/accessible-menu/compare/v4.1.0...v4.1.1) (2024-08-01)
+
+
+### Bug Fixes
+
+* **toggles:** use appropriate aria attributes based on spec ([d041b52](https://github.com/NickDJM/accessible-menu/commit/d041b52e318797eebac466c681d9a6c4c67f0cdf)), closes [#333](https://github.com/NickDJM/accessible-menu/issues/333)
+
+
+### Build System
+
+* **npm:** remove browser-sync plugin ([aa1f65a](https://github.com/NickDJM/accessible-menu/commit/aa1f65a80d05635d14f23c3d7ad8585dabe6df17))
+* **npm:** update husky to latest and remove deprecations ([7c3e78d](https://github.com/NickDJM/accessible-menu/commit/7c3e78dce4adb9726f4fc97a3f945a052ee9b038))
+
 ## [4.1.0](https://github.com/NickDJM/accessible-menu/compare/v4.0.1...v4.1.0) (2024-06-25)
 
 

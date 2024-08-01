@@ -178,7 +178,7 @@ function R(r) {
     };
   }
 }
-function z(r) {
+function H(r) {
   try {
     if (typeof r != "object") {
       const e = typeof r;
@@ -205,7 +205,7 @@ function z(r) {
     };
   }
 }
-function H(r, t) {
+function x(r, t) {
   if (p("string", { tagName: r }).status && k(HTMLElement, t).status) {
     const e = r.toLowerCase();
     let s = !0;
@@ -215,7 +215,7 @@ function H(r, t) {
   } else
     return !1;
 }
-class L {
+class A {
   /**
    * Constructs a new `BaseMenuToggle`.
    *
@@ -372,22 +372,18 @@ class L {
   /**
    * Sets the ARIA attributes on the toggle and controlled menu.
    *
-   * The first steps are to ensure that the toggle has `aria-haspopup`
-   * set to "true", `aria-expanded` is initially set to "false" and,
-   * if the toggle element is not a `<button>`, set the `role` to "button".
+   * The first steps are to ensure that the toggle has `aria-expanded`
+   * is initially set to "false".
    *
    * Then using the toggle and menu's IDs, the menu's `aria-labelledby` is set to
-   * the toggle's ID, and the toggle's `aria-controls` is set to the menu's ID.
+   * the toggle's ID.
    *
    * @protected
    */
   _setAriaAttributes() {
-    this.dom.toggle.setAttribute("aria-haspopup", "true"), this.dom.toggle.setAttribute("aria-expanded", "false"), H("button", { toggle: this.dom.toggle }) || this.dom.toggle.setAttribute("role", "button"), this.elements.controlledMenu.dom.menu.setAttribute(
+    this.dom.toggle.setAttribute("aria-expanded", "false"), this.elements.controlledMenu.dom.menu.setAttribute(
       "aria-labelledby",
       this.dom.toggle.id
-    ), this.dom.toggle.setAttribute(
-      "aria-controls",
-      this.elements.controlledMenu.dom.menu.id
     );
   }
   /**
@@ -511,7 +507,7 @@ class L {
     );
   }
 }
-class A {
+class L {
   /**
    * Constructs a new `BaseMenuItem`.
    *
@@ -693,8 +689,8 @@ class I {
     isTopLevel: f = !0,
     parentMenu: y = null,
     hoverType: M = "off",
-    hoverDelay: _ = 250,
-    enterDelay: b = -1,
+    hoverDelay: b = 250,
+    enterDelay: _ = -1,
     leaveDelay: C = -1
   }) {
     /**
@@ -713,7 +709,7 @@ class I {
      *
      * @type {typeof BaseMenuItem}
      */
-    u(this, "_MenuItemType", A);
+    u(this, "_MenuItemType", L);
     /**
      * The class to use when generating submenu toggles.
      *
@@ -721,7 +717,7 @@ class I {
      *
      * @type {typeof BaseMenuToggle}
      */
-    u(this, "_MenuToggleType", L);
+    u(this, "_MenuToggleType", A);
     /**
      * The DOM elements within the menu.
      *
@@ -898,7 +894,7 @@ class I {
      * @type {string[]}
      */
     u(this, "_errors", []);
-    this._dom.menu = t, this._dom.controller = h, this._dom.container = m, this._selectors.menuItems = e, this._selectors.menuLinks = s, this._selectors.submenuItems = n, this._selectors.submenuToggles = i, this._selectors.submenus = o, this._elements.menuItems = [], this._elements.submenuToggles = [], this._elements.controller = null, this._elements.parentMenu = y, this._elements.rootMenu = f ? this : null, this._openClass = c || "", this._closeClass = a || "", this._transitionClass = d || "", this._root = f, this._hoverType = M, this._hoverDelay = _, this._enterDelay = b, this._leaveDelay = C;
+    this._dom.menu = t, this._dom.controller = h, this._dom.container = m, this._selectors.menuItems = e, this._selectors.menuLinks = s, this._selectors.submenuItems = n, this._selectors.submenuToggles = i, this._selectors.submenus = o, this._elements.menuItems = [], this._elements.submenuToggles = [], this._elements.controller = null, this._elements.parentMenu = y, this._elements.rootMenu = f ? this : null, this._openClass = c || "", this._closeClass = a || "", this._transitionClass = d || "", this._root = f, this._hoverType = M, this._hoverDelay = b, this._enterDelay = _, this._leaveDelay = C;
   }
   /**
    * Initializes the menu.
@@ -930,7 +926,7 @@ class I {
         parentElement: this.dom.container,
         controlledMenu: this
       });
-      this._elements.controller = t;
+      x("button", { toggle: t.dom.toggle }) || t.dom.toggle.setAttribute("role", "button"), t.dom.toggle.setAttribute("aria-controls", this.dom.menu.id), this._elements.controller = t;
     }
     this._createChildElements();
   }
@@ -1206,7 +1202,7 @@ class I {
     }));
   }
   set hoverType(t) {
-    z({ value: t }), this._hoverType !== t && (this._hoverType = t);
+    H({ value: t }), this._hoverType !== t && (this._hoverType = t);
   }
   set hoverDelay(t) {
     p("number", { value: t }), this._hoverDelay !== t && (this._hoverDelay = t);
@@ -1269,7 +1265,7 @@ class I {
       });
       c.status || (this._errors.push(c.error.message), t = !1);
     }
-    const i = z({ hoverType: this._hoverType });
+    const i = H({ hoverType: this._hoverType });
     i.status || (this._errors.push(i.error.message), t = !1);
     const o = p("number", {
       hoverDelay: this._hoverDelay
@@ -1710,7 +1706,7 @@ class I {
     });
   }
 }
-class P extends A {
+class P extends L {
   /**
    * Constructs a new `DisclosureMenuItem`.
    *
@@ -1742,7 +1738,7 @@ class P extends A {
     }), h && this.initialize();
   }
 }
-class U extends L {
+class U extends A {
   /**
    * Constructs a new `DisclosureMenuToggle`.
    *
@@ -1766,6 +1762,25 @@ class U extends L {
       controlledMenu: s,
       parentMenu: n
     }), i && this.initialize();
+  }
+  /**
+   * Sets the ARIA attributes on the toggle and controlled menu.
+   *
+   * Calls the BaseMenuToggle's _setAriaAttributes method.
+   *
+   * Ensures the toggle element has a `role` of "button" if it is not
+   * already a button.
+   *
+   * Then using the toggle and menu's IDs, the toggle's `aria-controls`
+   * is set to the menu's ID.
+   *
+   * @protected
+   */
+  _setAriaAttributes() {
+    super._setAriaAttributes(), x("button", { toggle: this.dom.toggle }) || this.dom.toggle.setAttribute("role", "button"), this.dom.toggle.setAttribute(
+      "aria-controls",
+      this.elements.controlledMenu.dom.menu.id
+    );
   }
   /**
    * Opens the controlled menu.
@@ -1801,7 +1816,7 @@ class U extends L {
     this.isOpen && this.closeChildren(), super.close();
   }
 }
-class x extends I {
+class K extends I {
   /**
    * Constructs a new `DisclosureMenu`.
    *
@@ -1840,8 +1855,8 @@ class x extends I {
     transitionClass: f = "transitioning",
     isTopLevel: y = !0,
     parentMenu: M = null,
-    hoverType: _ = "off",
-    hoverDelay: b = 250,
+    hoverType: b = "off",
+    hoverDelay: _ = 250,
     enterDelay: C = -1,
     leaveDelay: E = -1,
     optionalKeySupport: T = !1,
@@ -1861,8 +1876,8 @@ class x extends I {
       transitionClass: f,
       isTopLevel: y,
       parentMenu: M,
-      hoverType: _,
-      hoverDelay: b,
+      hoverType: b,
+      hoverDelay: _,
       enterDelay: C,
       leaveDelay: E
     });
@@ -1873,7 +1888,7 @@ class x extends I {
      *
      * @type {typeof DisclosureMenu}
      */
-    u(this, "_MenuType", x);
+    u(this, "_MenuType", K);
     // eslint-disable-line no-use-before-define
     /**
      * The class to use when generating menu items.
@@ -2036,7 +2051,7 @@ class x extends I {
     });
   }
 }
-class W extends A {
+class W extends L {
   /**
    * Constructs a new `MenubarItem`.
    *
@@ -2105,7 +2120,7 @@ class W extends A {
     super.blur(), this.elements.parentMenu.isTopLevel && (this.dom.link.tabIndex = -1);
   }
 }
-class Z extends L {
+class Z extends A {
   /**
    * Constructs a new `MenubarToggle`.
    *
@@ -2129,6 +2144,18 @@ class Z extends L {
       controlledMenu: s,
       parentMenu: n
     }), i && this.initialize();
+  }
+  /**
+   * Sets the ARIA attributes on the toggle and controlled menu.
+   *
+   * Calls the BaseMenuToggle's _setAriaAttributes method.
+   *
+   * Then sets the toggle's `aria-haspopup` attribute to "true".
+   *
+   * @protected
+   */
+  _setAriaAttributes() {
+    super._setAriaAttributes(), this.dom.toggle.setAttribute("aria-haspopup", "true");
   }
   /**
    * Opens the controlled menu.
@@ -2164,7 +2191,7 @@ class Z extends L {
     this.isOpen && (this.closeChildren(), this.elements.parentMenu && this.elements.parentMenu.focusCurrentChild()), super.close();
   }
 }
-class K extends I {
+class F extends I {
   /**
    * Constructs a new `Menubar`.
    *
@@ -2202,8 +2229,8 @@ class K extends I {
     transitionClass: f = "transitioning",
     isTopLevel: y = !0,
     parentMenu: M = null,
-    hoverType: _ = "off",
-    hoverDelay: b = 250,
+    hoverType: b = "off",
+    hoverDelay: _ = 250,
     enterDelay: C = -1,
     leaveDelay: E = -1,
     initialize: T = !0
@@ -2222,8 +2249,8 @@ class K extends I {
       transitionClass: f,
       isTopLevel: y,
       parentMenu: M,
-      hoverType: _,
-      hoverDelay: b,
+      hoverType: b,
+      hoverDelay: _,
       enterDelay: C,
       leaveDelay: E
     });
@@ -2234,7 +2261,7 @@ class K extends I {
      *
      * @type {typeof Menubar}
      */
-    u(this, "_MenuType", K);
+    u(this, "_MenuType", F);
     // eslint-disable-line no-use-before-define
     /**
      * The class to use when generating menu items.
@@ -2274,7 +2301,7 @@ class K extends I {
    */
   initialize() {
     try {
-      super.initialize(), this.isTopLevel ? this.dom.menu.setAttribute("role", "menubar") : this.dom.menu.setAttribute("role", "menu"), this._handleFocus(), this._handleClick(), this._handleHover(), this._handleKeydown(), this._handleKeyup(), this.isTopLevel && (this.elements.menuItems[0].dom.link.tabIndex = 0);
+      super.initialize(), this.isTopLevel ? this.dom.menu.setAttribute("role", "menubar") : this.dom.menu.setAttribute("role", "menu"), this._handleFocus(), this._handleClick(), this._handleHover(), this._handleKeydown(), this._handleKeyup(), this.isTopLevel && (this.elements.menuItems[0].dom.link.tabIndex = 0, this.elements.controller && this.elements.controller.dom.toggle.removeAttribute("aria-haspopup"));
     } catch (e) {
       console.error(e);
     }
@@ -2442,7 +2469,7 @@ class K extends I {
     }
   }
 }
-class Q extends A {
+class Q extends L {
   /**
    * Constructs a new `TopLinkDisclosureMenuItem`.
    *
@@ -2495,7 +2522,7 @@ class Q extends A {
     this._elements.parentMenu = n, this._elements.childMenu = o, this._elements.toggle = h, this._elements.sibling = c, m && this.initialize();
   }
 }
-class B extends L {
+class B extends A {
   /**
    * Constructs a new `TopLinkDisclosureMenuToggle`.
    *
@@ -2519,6 +2546,25 @@ class B extends L {
       controlledMenu: s,
       parentMenu: n
     }), i && this.initialize();
+  }
+  /**
+   * Sets the ARIA attributes on the toggle and controlled menu.
+   *
+   * Calls the BaseMenuToggle's _setAriaAttributes method.
+   *
+   * Ensures the toggle element has a `role` of "button" if it is not
+   * already a button.
+   *
+   * Then using the toggle and menu's IDs, the toggle's `aria-controls`
+   * is set to the menu's ID.
+   *
+   * @protected
+   */
+  _setAriaAttributes() {
+    super._setAriaAttributes(), x("button", { toggle: this.dom.toggle }) || this.dom.toggle.setAttribute("role", "button"), this.dom.toggle.setAttribute(
+      "aria-controls",
+      this.elements.controlledMenu.dom.menu.id
+    );
   }
   /**
    * Opens the controlled menu.
@@ -2548,7 +2594,7 @@ class B extends L {
     this.isOpen && this.closeChildren(), super.close();
   }
 }
-class F extends I {
+class $ extends I {
   /**
    * Constructs a new `TopLinkDisclosureMenu`.
    *
@@ -2588,8 +2634,8 @@ class F extends I {
     closeClass: f = "hide",
     transitionClass: y = "transitioning",
     isTopLevel: M = !0,
-    parentMenu: _ = null,
-    hoverType: b = "off",
+    parentMenu: b = null,
+    hoverType: _ = "off",
     hoverDelay: C = 250,
     enterDelay: E = -1,
     leaveDelay: T = -1,
@@ -2609,8 +2655,8 @@ class F extends I {
       closeClass: f,
       transitionClass: y,
       isTopLevel: M,
-      parentMenu: _,
-      hoverType: b,
+      parentMenu: b,
+      hoverType: _,
       hoverDelay: C,
       enterDelay: E,
       leaveDelay: T
@@ -2622,7 +2668,7 @@ class F extends I {
      *
      * @type {typeof TopLinkDisclosureMenu}
      */
-    u(this, "_MenuType", F);
+    u(this, "_MenuType", $);
     // eslint-disable-line no-use-before-define
     /**
      * The class to use when generating menu items.
@@ -2952,7 +2998,7 @@ class F extends I {
     });
   }
 }
-class G extends A {
+class G extends L {
   /**
    * Constructs a new `TreeviewItem`.
    *
@@ -3015,7 +3061,7 @@ class G extends A {
     super.blur(), this.dom.link.tabIndex = -1;
   }
 }
-class J extends L {
+class J extends A {
   /**
    * Constructs a new `TreeviewToggle`.
    *
@@ -3056,27 +3102,25 @@ class J extends L {
   /**
    * Sets the ARIA attributes on the toggle and controlled menu.
    *
-   * The first steps are to ensure that the toggle has `aria-haspopup`
-   * set to "true", `aria-expanded` set to "false" if it's not already
-   * set explicitly to "true", and if the toggle element is not a `<button>`,
-   * set the `role` to "button".
+   * The first steps are to ensure that the toggle has `aria-expanded`
+   * set to "false" if it's not already set explicitly to "true".
    *
    * Then using the toggle and menu's IDs, the menu's `aria-labelledby` is set to
-   * the toggle's ID, and the toggle's `aria-controls` is set to the menu's ID.
+   * the toggle's ID, and the toggle's `aria-owns` is set to the menu's ID.
    *
    * @protected
    */
   _setAriaAttributes() {
-    this.dom.toggle.setAttribute("aria-haspopup", "true"), this.dom.toggle.getAttribute("aria-expanded") !== "true" && this.dom.toggle.setAttribute("aria-expanded", "false"), H("button", { toggle: this.dom.toggle }) || this.dom.toggle.setAttribute("role", "button"), this.elements.controlledMenu.dom.menu.setAttribute(
+    this.dom.toggle.getAttribute("aria-expanded") !== "true" && this.dom.toggle.setAttribute("aria-expanded", "false"), this.elements.controlledMenu.dom.menu.setAttribute(
       "aria-labelledby",
       this.dom.toggle.id
     ), this.dom.toggle.setAttribute(
-      "aria-controls",
+      "aria-owns",
       this.elements.controlledMenu.dom.menu.id
     );
   }
 }
-class $ extends I {
+class z extends I {
   /**
    * Constructs a new `Treeview`.
    *
@@ -3114,8 +3158,8 @@ class $ extends I {
     transitionClass: f = "transitioning",
     isTopLevel: y = !0,
     parentMenu: M = null,
-    hoverType: _ = "off",
-    hoverDelay: b = 250,
+    hoverType: b = "off",
+    hoverDelay: _ = 250,
     enterDelay: C = -1,
     leaveDelay: E = -1,
     initialize: T = !0
@@ -3134,8 +3178,8 @@ class $ extends I {
       transitionClass: f,
       isTopLevel: y,
       parentMenu: M,
-      hoverType: _,
-      hoverDelay: b,
+      hoverType: b,
+      hoverDelay: _,
       enterDelay: C,
       leaveDelay: E
     });
@@ -3146,7 +3190,7 @@ class $ extends I {
      *
      * @type {typeof Treeview}
      */
-    u(this, "_MenuType", $);
+    u(this, "_MenuType", z);
     // eslint-disable-line no-use-before-define
     /**
      * The class to use when generating menu items.
@@ -3186,7 +3230,7 @@ class $ extends I {
    */
   initialize() {
     try {
-      super.initialize(), this.isTopLevel ? (this.dom.menu.setAttribute("role", "tree"), this.elements.menuItems[0].dom.link.tabIndex = 0) : this.dom.menu.setAttribute("role", "group"), this._handleFocus(), this._handleClick(), this._handleHover(), this._handleKeydown(), this._handleKeyup();
+      super.initialize(), this.isTopLevel ? (this.dom.menu.setAttribute("role", "tree"), this.elements.menuItems[0].dom.link.tabIndex = 0) : this.dom.menu.setAttribute("role", "group"), this._handleFocus(), this._handleClick(), this._handleHover(), this._handleKeydown(), this._handleKeyup(), this.isTopLevel && this.elements.controller && this.elements.controller.dom.toggle.removeAttribute("aria-owns");
     } catch (e) {
       console.error(e);
     }
@@ -3404,10 +3448,10 @@ class $ extends I {
   }
 }
 const Y = {
-  DisclosureMenu: x,
-  Menubar: K,
-  TopLinkDisclosureMenu: F,
-  Treeview: $
+  DisclosureMenu: K,
+  Menubar: F,
+  TopLinkDisclosureMenu: $,
+  Treeview: z
 };
 export {
   Y as default

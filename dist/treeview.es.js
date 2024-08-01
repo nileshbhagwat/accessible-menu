@@ -1,6 +1,6 @@
-var j = Object.defineProperty;
-var F = (n, e, t) => e in n ? j(n, e, { enumerable: !0, configurable: !0, writable: !0, value: t }) : n[e] = t;
-var r = (n, e, t) => F(n, typeof e != "symbol" ? e + "" : e, t);
+var x = Object.defineProperty;
+var j = (n, e, t) => e in n ? x(n, e, { enumerable: !0, configurable: !0, writable: !0, value: t }) : n[e] = t;
+var r = (n, e, t) => j(n, typeof e != "symbol" ? e + "" : e, t);
 function g(n, e) {
   typeof n == "string" ? e.classList.add(n) : e.classList.add(...n);
 }
@@ -124,7 +124,7 @@ function _(n) {
     };
   }
 }
-function V(n) {
+function F(n) {
   try {
     if (typeof n != "object") {
       const t = typeof n;
@@ -151,7 +151,7 @@ function V(n) {
     };
   }
 }
-function z(n) {
+function V(n) {
   try {
     if (typeof n != "object") {
       const t = typeof n;
@@ -205,7 +205,7 @@ function S(n) {
     };
   }
 }
-function L(n, e) {
+function z(n, e) {
   if (a("string", { tagName: n }).status && b(HTMLElement, e).status) {
     const t = n.toLowerCase();
     let s = !0;
@@ -215,7 +215,7 @@ function L(n, e) {
   } else
     return !1;
 }
-class k {
+class L {
   /**
    * Constructs a new `BaseMenuToggle`.
    *
@@ -372,22 +372,18 @@ class k {
   /**
    * Sets the ARIA attributes on the toggle and controlled menu.
    *
-   * The first steps are to ensure that the toggle has `aria-haspopup`
-   * set to "true", `aria-expanded` is initially set to "false" and,
-   * if the toggle element is not a `<button>`, set the `role` to "button".
+   * The first steps are to ensure that the toggle has `aria-expanded`
+   * is initially set to "false".
    *
    * Then using the toggle and menu's IDs, the menu's `aria-labelledby` is set to
-   * the toggle's ID, and the toggle's `aria-controls` is set to the menu's ID.
+   * the toggle's ID.
    *
    * @protected
    */
   _setAriaAttributes() {
-    this.dom.toggle.setAttribute("aria-haspopup", "true"), this.dom.toggle.setAttribute("aria-expanded", "false"), L("button", { toggle: this.dom.toggle }) || this.dom.toggle.setAttribute("role", "button"), this.elements.controlledMenu.dom.menu.setAttribute(
+    this.dom.toggle.setAttribute("aria-expanded", "false"), this.elements.controlledMenu.dom.menu.setAttribute(
       "aria-labelledby",
       this.dom.toggle.id
-    ), this.dom.toggle.setAttribute(
-      "aria-controls",
-      this.elements.controlledMenu.dom.menu.id
     );
   }
   /**
@@ -511,7 +507,7 @@ class k {
     );
   }
 }
-class A {
+class k {
   /**
    * Constructs a new `BaseMenuItem`.
    *
@@ -713,7 +709,7 @@ class M {
      *
      * @type {typeof BaseMenuItem}
      */
-    r(this, "_MenuItemType", A);
+    r(this, "_MenuItemType", k);
     /**
      * The class to use when generating submenu toggles.
      *
@@ -721,7 +717,7 @@ class M {
      *
      * @type {typeof BaseMenuToggle}
      */
-    r(this, "_MenuToggleType", k);
+    r(this, "_MenuToggleType", L);
     /**
      * The DOM elements within the menu.
      *
@@ -930,7 +926,7 @@ class M {
         parentElement: this.dom.container,
         controlledMenu: this
       });
-      this._elements.controller = e;
+      z("button", { toggle: e.dom.toggle }) || e.dom.toggle.setAttribute("role", "button"), e.dom.toggle.setAttribute("aria-controls", this.dom.menu.id), this._elements.controller = e;
     }
     this._createChildElements();
   }
@@ -1196,12 +1192,12 @@ class M {
     e < -1 ? (this._currentChild = -1, t(this)) : e >= this.elements.menuItems.length ? (this._currentChild = this.elements.menuItems.length - 1, t(this)) : this.focusChild !== e && (this._currentChild = e, t(this));
   }
   set focusState(e) {
-    V({ value: e }), this._focusState !== e && (this._focusState = e), this.elements.submenuToggles.length > 0 && (e === "self" || e === "none") && this.elements.submenuToggles.forEach((t) => {
+    F({ value: e }), this._focusState !== e && (this._focusState = e), this.elements.submenuToggles.length > 0 && (e === "self" || e === "none") && this.elements.submenuToggles.forEach((t) => {
       t.elements.controlledMenu.focusState = "none";
     }), this.elements.parentMenu && (e === "self" || e === "child") && (this.elements.parentMenu.focusState = "child");
   }
   set currentEvent(e) {
-    z({ value: e }), this._currentEvent !== e && (this._currentEvent = e, this.elements.submenuToggles.length > 0 && this.elements.submenuToggles.forEach((t) => {
+    V({ value: e }), this._currentEvent !== e && (this._currentEvent = e, this.elements.submenuToggles.length > 0 && this.elements.submenuToggles.forEach((t) => {
       t.elements.controlledMenu.currentEvent = e;
     }));
   }
@@ -1710,7 +1706,7 @@ class M {
     });
   }
 }
-class N extends A {
+class N extends k {
   /**
    * Constructs a new `TreeviewItem`.
    *
@@ -1773,7 +1769,7 @@ class N extends A {
     super.blur(), this.dom.link.tabIndex = -1;
   }
 }
-class q extends k {
+class q extends L {
   /**
    * Constructs a new `TreeviewToggle`.
    *
@@ -1814,27 +1810,25 @@ class q extends k {
   /**
    * Sets the ARIA attributes on the toggle and controlled menu.
    *
-   * The first steps are to ensure that the toggle has `aria-haspopup`
-   * set to "true", `aria-expanded` set to "false" if it's not already
-   * set explicitly to "true", and if the toggle element is not a `<button>`,
-   * set the `role` to "button".
+   * The first steps are to ensure that the toggle has `aria-expanded`
+   * set to "false" if it's not already set explicitly to "true".
    *
    * Then using the toggle and menu's IDs, the menu's `aria-labelledby` is set to
-   * the toggle's ID, and the toggle's `aria-controls` is set to the menu's ID.
+   * the toggle's ID, and the toggle's `aria-owns` is set to the menu's ID.
    *
    * @protected
    */
   _setAriaAttributes() {
-    this.dom.toggle.setAttribute("aria-haspopup", "true"), this.dom.toggle.getAttribute("aria-expanded") !== "true" && this.dom.toggle.setAttribute("aria-expanded", "false"), L("button", { toggle: this.dom.toggle }) || this.dom.toggle.setAttribute("role", "button"), this.elements.controlledMenu.dom.menu.setAttribute(
+    this.dom.toggle.getAttribute("aria-expanded") !== "true" && this.dom.toggle.setAttribute("aria-expanded", "false"), this.elements.controlledMenu.dom.menu.setAttribute(
       "aria-labelledby",
       this.dom.toggle.id
     ), this.dom.toggle.setAttribute(
-      "aria-controls",
+      "aria-owns",
       this.elements.controlledMenu.dom.menu.id
     );
   }
 }
-class O extends M {
+class A extends M {
   /**
    * Constructs a new `Treeview`.
    *
@@ -1875,8 +1869,8 @@ class O extends M {
     hoverType: v = "off",
     hoverDelay: w = 250,
     enterDelay: I = -1,
-    leaveDelay: $ = -1,
-    initialize: x = !0
+    leaveDelay: O = -1,
+    initialize: $ = !0
   }) {
     super({
       menuElement: t,
@@ -1895,7 +1889,7 @@ class O extends M {
       hoverType: v,
       hoverDelay: w,
       enterDelay: I,
-      leaveDelay: $
+      leaveDelay: O
     });
     /**
      * The class to use when generating submenus.
@@ -1904,7 +1898,7 @@ class O extends M {
      *
      * @type {typeof Treeview}
      */
-    r(this, "_MenuType", O);
+    r(this, "_MenuType", A);
     // eslint-disable-line no-use-before-define
     /**
      * The class to use when generating menu items.
@@ -1922,7 +1916,7 @@ class O extends M {
      * @type {typeof TreeviewToggle}
      */
     r(this, "_MenuToggleType", q);
-    x && this.initialize();
+    $ && this.initialize();
   }
   /**
    * Initializes the menu.
@@ -1944,7 +1938,7 @@ class O extends M {
    */
   initialize() {
     try {
-      super.initialize(), this.isTopLevel ? (this.dom.menu.setAttribute("role", "tree"), this.elements.menuItems[0].dom.link.tabIndex = 0) : this.dom.menu.setAttribute("role", "group"), this._handleFocus(), this._handleClick(), this._handleHover(), this._handleKeydown(), this._handleKeyup();
+      super.initialize(), this.isTopLevel ? (this.dom.menu.setAttribute("role", "tree"), this.elements.menuItems[0].dom.link.tabIndex = 0) : this.dom.menu.setAttribute("role", "group"), this._handleFocus(), this._handleClick(), this._handleHover(), this._handleKeydown(), this._handleKeyup(), this.isTopLevel && this.elements.controller && this.elements.controller.dom.toggle.removeAttribute("aria-owns");
     } catch (t) {
       console.error(t);
     }
@@ -2162,5 +2156,5 @@ class O extends M {
   }
 }
 export {
-  O as default
+  A as default
 };
