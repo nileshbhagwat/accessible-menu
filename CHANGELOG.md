@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.1.2](https://github.com/NickDJM/accessible-menu/compare/v4.1.1...v4.1.2) (2024-08-01)
+
+
+### Bug Fixes
+
+* add requestAnimationFrame to focus and blur to make transitioning more consistent ([#338](https://github.com/NickDJM/accessible-menu/issues/338)) ([6add377](https://github.com/NickDJM/accessible-menu/commit/6add37733b08ac26018cbbfd1a40e04407751054)), closes [#337](https://github.com/NickDJM/accessible-menu/issues/337)
+
 ### [4.1.1](https://github.com/NickDJM/accessible-menu/compare/v4.1.0...v4.1.1) (2024-08-01)
 
 

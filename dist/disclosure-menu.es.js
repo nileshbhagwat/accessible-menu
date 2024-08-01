@@ -615,7 +615,9 @@ class L {
    * @public
    */
   focus() {
-    this.elements.parentMenu.shouldFocus && this.dom.link.focus();
+    this.elements.parentMenu.shouldFocus && requestAnimationFrame(() => {
+      this.dom.link.focus();
+    });
   }
   /**
    * Blurs the menu item's link if the parent menu's
@@ -624,7 +626,9 @@ class L {
    * @public
    */
   blur() {
-    this.elements.parentMenu.shouldFocus && this.dom.link.blur();
+    this.elements.parentMenu.shouldFocus && requestAnimationFrame(() => {
+      this.dom.link.blur();
+    });
   }
 }
 function y(n) {
@@ -1859,8 +1863,8 @@ class O extends b {
     hoverDelay: w = 250,
     enterDelay: S = -1,
     leaveDelay: $ = -1,
-    optionalKeySupport: j = !1,
-    initialize: F = !0
+    optionalKeySupport: F = !1,
+    initialize: j = !0
   }) {
     super({
       menuElement: t,
@@ -1922,7 +1926,7 @@ class O extends b {
      * @type {boolean}
      */
     r(this, "_optionalSupport", !1);
-    this._optionalSupport = j, F && this.initialize();
+    this._optionalSupport = F, j && this.initialize();
   }
   /**
    * Initializes the menu.

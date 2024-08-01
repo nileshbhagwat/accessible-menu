@@ -1,6 +1,6 @@
-var x = Object.defineProperty;
-var F = (n, e, t) => e in n ? x(n, e, { enumerable: !0, configurable: !0, writable: !0, value: t }) : n[e] = t;
-var o = (n, e, t) => F(n, typeof e != "symbol" ? e + "" : e, t);
+var F = Object.defineProperty;
+var x = (n, e, t) => e in n ? F(n, e, { enumerable: !0, configurable: !0, writable: !0, value: t }) : n[e] = t;
+var o = (n, e, t) => x(n, typeof e != "symbol" ? e + "" : e, t);
 function d(n, e) {
   typeof n == "string" ? e.classList.add(n) : e.classList.add(...n);
 }
@@ -615,7 +615,9 @@ class D {
    * @public
    */
   focus() {
-    this.elements.parentMenu.shouldFocus && this.dom.link.focus();
+    this.elements.parentMenu.shouldFocus && requestAnimationFrame(() => {
+      this.dom.link.focus();
+    });
   }
   /**
    * Blurs the menu item's link if the parent menu's
@@ -624,7 +626,9 @@ class D {
    * @public
    */
   blur() {
-    this.elements.parentMenu.shouldFocus && this.dom.link.blur();
+    this.elements.parentMenu.shouldFocus && requestAnimationFrame(() => {
+      this.dom.link.blur();
+    });
   }
 }
 function _(n) {

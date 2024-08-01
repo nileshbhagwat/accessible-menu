@@ -1,6 +1,6 @@
 var x = Object.defineProperty;
-var j = (n, e, t) => e in n ? x(n, e, { enumerable: !0, configurable: !0, writable: !0, value: t }) : n[e] = t;
-var r = (n, e, t) => j(n, typeof e != "symbol" ? e + "" : e, t);
+var F = (n, e, t) => e in n ? x(n, e, { enumerable: !0, configurable: !0, writable: !0, value: t }) : n[e] = t;
+var r = (n, e, t) => F(n, typeof e != "symbol" ? e + "" : e, t);
 function g(n, e) {
   typeof n == "string" ? e.classList.add(n) : e.classList.add(...n);
 }
@@ -124,7 +124,7 @@ function _(n) {
     };
   }
 }
-function F(n) {
+function j(n) {
   try {
     if (typeof n != "object") {
       const t = typeof n;
@@ -615,7 +615,9 @@ class k {
    * @public
    */
   focus() {
-    this.elements.parentMenu.shouldFocus && this.dom.link.focus();
+    this.elements.parentMenu.shouldFocus && requestAnimationFrame(() => {
+      this.dom.link.focus();
+    });
   }
   /**
    * Blurs the menu item's link if the parent menu's
@@ -624,7 +626,9 @@ class k {
    * @public
    */
   blur() {
-    this.elements.parentMenu.shouldFocus && this.dom.link.blur();
+    this.elements.parentMenu.shouldFocus && requestAnimationFrame(() => {
+      this.dom.link.blur();
+    });
   }
 }
 function C(n) {
@@ -1192,7 +1196,7 @@ class M {
     e < -1 ? (this._currentChild = -1, t(this)) : e >= this.elements.menuItems.length ? (this._currentChild = this.elements.menuItems.length - 1, t(this)) : this.focusChild !== e && (this._currentChild = e, t(this));
   }
   set focusState(e) {
-    F({ value: e }), this._focusState !== e && (this._focusState = e), this.elements.submenuToggles.length > 0 && (e === "self" || e === "none") && this.elements.submenuToggles.forEach((t) => {
+    j({ value: e }), this._focusState !== e && (this._focusState = e), this.elements.submenuToggles.length > 0 && (e === "self" || e === "none") && this.elements.submenuToggles.forEach((t) => {
       t.elements.controlledMenu.focusState = "none";
     }), this.elements.parentMenu && (e === "self" || e === "child") && (this.elements.parentMenu.focusState = "child");
   }
@@ -1706,7 +1710,7 @@ class M {
     });
   }
 }
-class N extends k {
+class q extends k {
   /**
    * Constructs a new `TreeviewItem`.
    *
@@ -1769,7 +1773,7 @@ class N extends k {
     super.blur(), this.dom.link.tabIndex = -1;
   }
 }
-class q extends L {
+class N extends L {
   /**
    * Constructs a new `TreeviewToggle`.
    *
@@ -1907,7 +1911,7 @@ class A extends M {
      *
      * @type {typeof TreeviewItem}
      */
-    r(this, "_MenuItemType", N);
+    r(this, "_MenuItemType", q);
     /**
      * The class to use when generating submenu toggles.
      *
@@ -1915,7 +1919,7 @@ class A extends M {
      *
      * @type {typeof TreeviewToggle}
      */
-    r(this, "_MenuToggleType", q);
+    r(this, "_MenuToggleType", N);
     $ && this.initialize();
   }
   /**

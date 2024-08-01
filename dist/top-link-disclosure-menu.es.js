@@ -1,6 +1,6 @@
-var V = Object.defineProperty;
-var q = (n, e, t) => e in n ? V(n, e, { enumerable: !0, configurable: !0, writable: !0, value: t }) : n[e] = t;
-var o = (n, e, t) => q(n, typeof e != "symbol" ? e + "" : e, t);
+var K = Object.defineProperty;
+var V = (n, e, t) => e in n ? K(n, e, { enumerable: !0, configurable: !0, writable: !0, value: t }) : n[e] = t;
+var o = (n, e, t) => V(n, typeof e != "symbol" ? e + "" : e, t);
 function d(n, e) {
   typeof n == "string" ? e.classList.add(n) : e.classList.add(...n);
 }
@@ -615,7 +615,9 @@ class A {
    * @public
    */
   focus() {
-    this.elements.parentMenu.shouldFocus && this.dom.link.focus();
+    this.elements.parentMenu.shouldFocus && requestAnimationFrame(() => {
+      this.dom.link.focus();
+    });
   }
   /**
    * Blurs the menu item's link if the parent menu's
@@ -624,7 +626,9 @@ class A {
    * @public
    */
   blur() {
-    this.elements.parentMenu.shouldFocus && this.dom.link.blur();
+    this.elements.parentMenu.shouldFocus && requestAnimationFrame(() => {
+      this.dom.link.blur();
+    });
   }
 }
 function b(n) {
@@ -1877,7 +1881,7 @@ class O extends T {
     enterDelay: $ = -1,
     leaveDelay: j = -1,
     optionalKeySupport: F = !1,
-    initialize: K = !0
+    initialize: q = !0
   }) {
     super({
       menuElement: t,
@@ -1963,7 +1967,7 @@ class O extends T {
     o(this, "_optionalSupport", !1);
     this._optionalSupport = F, this._selectors.menuItems = s, this._selectors.submenuItems = r, this._selectors.submenuToggles = l, this._selectors.submenus = h, this._selectors.submenuSubtoggles = c, this._selectors.menuLinks = [
       .../* @__PURE__ */ new Set([i, l])
-    ].join(","), K && this.initialize();
+    ].join(","), q && this.initialize();
   }
   /**
    * Initializes the menu.
