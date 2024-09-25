@@ -53,6 +53,9 @@ export default defineConfig({
     lib: lib[buildType] || lib.default,
     emptyOutDir: false,
   },
+  server: {
+    host: "0.0.0.0",
+  },
   test: {
     environment: "jsdom",
     environmentOptions: {
