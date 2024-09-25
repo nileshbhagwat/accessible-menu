@@ -17,7 +17,7 @@ new BaseMenuItem({
 });
 ```
 
-The constructor populates the dom, elements, and submenu properties. It will _not_ initialize the menu item; this is left to the subclasses to envoke.
+The constructor populates the dom, elements, and submenu properties. It will _not_ initialize the menu item; this is left to the subclasses to evoke.
 
 ### Parameters {#constructor--parameters}
 

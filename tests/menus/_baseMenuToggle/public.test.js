@@ -272,7 +272,7 @@ describe("BaseMenuToggle public methods", () => {
     });
   });
 
-  // Test BaseMenuToggle closeSiblins().
+  // Test BaseMenuToggle closeSiblings().
   describe("closeSiblings", () => {
     // Test that closeSiblings calls close() on each sibling toggle.
     it("should call close() on each sibling toggle", () => {

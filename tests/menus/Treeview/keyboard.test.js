@@ -354,7 +354,7 @@ describe("Treeview", () => {
 
         expect(menu.currentEvent).toBe("character");
       });
-      // Test that thet menu's focusNextNodeWithCharacter method is called with the key that was pressed.
+      // Test that the menu's focusNextNodeWithCharacter method is called with the key that was pressed.
       it("should call the menu's focusNextNodeWithCharacter method with the key that was pressed", () => {
         // Create a new Treeview instance for testing.
         const menu = new Treeview({

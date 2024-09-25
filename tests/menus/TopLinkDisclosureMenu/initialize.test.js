@@ -370,7 +370,7 @@ describe("TopLinkDisclosureMenu (custom arguments)", () => {
     }
   );
 
-  // Thest that the TopLinkDisclosureMenu will initialize if isTopLevel is true.
+  // Test that the TopLinkDisclosureMenu will initialize if isTopLevel is true.
   it("should initialize if isTopLevel is true", () => {
     // Test that the menu initializes.
     expect(() => {

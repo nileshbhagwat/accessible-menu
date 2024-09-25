@@ -24,7 +24,7 @@ You may now use `import` and `require` to import accessible menu without needing
 
 - The default `menuToggleSelector` has been changes from `"a"` to `"button"`.
 
-#### Top Link Disclousre Menus
+#### Top Link Disclosure Menus
 
 - Added new menu type for [top link disclosure menus](/top-link-disclosure-menus).
 

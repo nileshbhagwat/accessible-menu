@@ -20,8 +20,8 @@ afterEach(() => {
 describe("TreeviewItem public methods", () => {
   // Test TreeviewItem focus().
   describe("focus", () => {
-    // Test that focus does not call focus() on the link if the parent menu's shouldFoucs is false.
-    it("should not call focus() on the link if the parent menu's shouldFoucs is false", () => {
+    // Test that focus does not call focus() on the link if the parent menu's shouldFocus is false.
+    it("should not call focus() on the link if the parent menu's shouldFocus is false", () => {
       // Create a new Treeview instance for testing.
       const menu = new Treeview({
         menuElement: document.querySelector("ul"),
@@ -39,8 +39,8 @@ describe("TreeviewItem public methods", () => {
       expect(spy).not.toHaveBeenCalled();
     });
 
-    // Test that focus calls focus() on the link if the parent menu's shouldFoucs is true.
-    it("should call focus() on the link if the parent menu's shouldFoucs is true", () => {
+    // Test that focus calls focus() on the link if the parent menu's shouldFocus is true.
+    it("should call focus() on the link if the parent menu's shouldFocus is true", () => {
       // Create a new Treeview instance for testing.
       const menu = new Treeview({
         menuElement: document.querySelector("ul"),
@@ -85,8 +85,8 @@ describe("TreeviewItem public methods", () => {
 
   // Test TreeviewItem blur().
   describe("blur", () => {
-    // Test that blur does not call blur() on the link if the parent menu's shouldFoucs is false.
-    it("should not call blur() on the link if the parent menu's shouldFoucs is false", () => {
+    // Test that blur does not call blur() on the link if the parent menu's shouldFocus is false.
+    it("should not call blur() on the link if the parent menu's shouldFocus is false", () => {
       // Create a new Treeview instance for testing.
       const menu = new Treeview({
         menuElement: document.querySelector("ul"),
@@ -104,8 +104,8 @@ describe("TreeviewItem public methods", () => {
       expect(spy).not.toHaveBeenCalled();
     });
 
-    // Test that blur calls blur() on the link if the parent menu's shouldFoucs is true.
-    it("should call blur() on the link if the parent menu's shouldFoucs is true", () => {
+    // Test that blur calls blur() on the link if the parent menu's shouldFocus is true.
+    it("should call blur() on the link if the parent menu's shouldFocus is true", () => {
       // Create a new Treeview instance for testing.
       const menu = new Treeview({
         menuElement: document.querySelector("ul"),

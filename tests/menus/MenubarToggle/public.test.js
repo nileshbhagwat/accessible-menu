@@ -328,7 +328,7 @@ describe("MenubarToggle public methods", () => {
     });
   });
 
-  // Test MenubarToggle closeSiblins().
+  // Test MenubarToggle closeSiblings().
   describe("closeSiblings", () => {
     // Test that MenubarToggle implements the BaseMenuToggle closeSiblings.
     it("should implement the BaseMenuToggle closeSiblings", () => {

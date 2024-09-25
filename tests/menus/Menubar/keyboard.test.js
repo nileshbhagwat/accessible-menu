@@ -520,7 +520,7 @@ describe("Menubar", () => {
 
         expect(menu.currentEvent).toBe("character");
       });
-      // Test that thet menu's focusNextChildWithCharacter method is called with the key that was pressed.
+      // Test that the menu's focusNextChildWithCharacter method is called with the key that was pressed.
       it("should call the menu's focusNextChildWithCharacter method with the key that was pressed", () => {
         // Create a new Menubar instance for testing.
         const menu = new Menubar({

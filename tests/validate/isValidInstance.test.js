@@ -54,7 +54,7 @@ describe("isValidInstance", () => {
     expect(result.error).toBeInstanceOf(TypeError);
   });
 
-  // Test pasing a non-valid constructor.
+  // Test passing a non-valid constructor.
   it("should return false when checking for a non-valid constructor", () => {
     const element = document.createElement("div");
     const result = isValidInstance("string", { element });

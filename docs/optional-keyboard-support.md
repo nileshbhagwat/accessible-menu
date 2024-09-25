@@ -1,6 +1,6 @@
 # Optional Keyboard Support
 
-Accessible Menu supports keyboard navigation out of the box. However, for Disclosure Menus and Top Link Disclosure Menus there are addional keybindings that are optional in the ARIA Authoring Practices Guide (APG).
+Accessible Menu supports keyboard navigation out of the box. However, for Disclosure Menus and Top Link Disclosure Menus there are additional keybindings that are optional in the ARIA Authoring Practices Guide (APG).
 
 Specifically, the APG states that the following keybindings should be optional:
 

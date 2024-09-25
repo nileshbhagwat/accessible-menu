@@ -447,7 +447,7 @@ describe("BaseMenu (custom arguments)", () => {
     }
   );
 
-  // Thest that the BaseMenu will initialize if isTopLevel is true.
+  // Test that the BaseMenu will initialize if isTopLevel is true.
   it("should initialize if isTopLevel is true", () => {
     // Create a new BaseMenu instance for testing.
     const menu = new BaseMenu({

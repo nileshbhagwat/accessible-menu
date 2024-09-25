@@ -144,7 +144,7 @@ class BaseMenu {
   _transitionClass = "transitioning";
 
   /**
-   * The duration time (in miliseconds) for the transition between open and closed states.
+   * The duration time (in milliseconds) for the transition between open and closed states.
    *
    * @protected
    *
@@ -153,7 +153,7 @@ class BaseMenu {
   _transitionDuration = 250;
 
   /**
-   * The duration time (in miliseconds) for the transition from closed to open states.
+   * The duration time (in milliseconds) for the transition from closed to open states.
    *
    * @protected
    *
@@ -162,7 +162,7 @@ class BaseMenu {
   _openDuration = -1;
 
   /**
-   * The duration time (in miliseconds) for the transition from open to closed states.
+   * The duration time (in milliseconds) for the transition from open to closed states.
    *
    * @protected
    *
@@ -216,7 +216,7 @@ class BaseMenu {
   _hoverType = "off";
 
   /**
-   * The delay time (in miliseconds) used for pointerenter/pointerleave events to take place.
+   * The delay time (in milliseconds) used for pointerenter/pointerleave events to take place.
    *
    * @protected
    *
@@ -225,7 +225,7 @@ class BaseMenu {
   _hoverDelay = 250;
 
   /**
-   * The delay time (in miliseconds) used for pointerenter events to take place.
+   * The delay time (in milliseconds) used for pointerenter events to take place.
    *
    * @protected
    *
@@ -234,7 +234,7 @@ class BaseMenu {
   _enterDelay = -1;
 
   /**
-   * The delay time (in miliseconds) used for pointerleave events to take place.
+   * The delay time (in milliseconds) used for pointerleave events to take place.
    *
    * @protected
    *
@@ -293,15 +293,15 @@ class BaseMenu {
    * @param {?(string|string[])} [options.openClass = show]                 - The class to apply when a menu is "open".
    * @param {?(string|string[])} [options.closeClass = hide]                - The class to apply when a menu is "closed".
    * @param {?(string|string[])} [options.transitionClass = transitioning]  - The class to apply when a menu is transitioning between "open" and "closed" states.
-   * @param {number}             [options.transitionDuration = 250]         - The duration of the transition between "open" and "closed" states (in miliseconds).
-   * @param {boolean}            [options.openDuration = -1]                - The duration of the transition from "closed" to "open" states (in miliseconds).
-   * @param {boolean}            [options.closeDuration = -1]               - The duration of the transition from "open" to "closed" states (in miliseconds).
+   * @param {number}             [options.transitionDuration = 250]         - The duration of the transition between "open" and "closed" states (in milliseconds).
+   * @param {boolean}            [options.openDuration = -1]                - The duration of the transition from "closed" to "open" states (in milliseconds).
+   * @param {boolean}            [options.closeDuration = -1]               - The duration of the transition from "open" to "closed" states (in milliseconds).
    * @param {boolean}            [options.isTopLevel = false]               - A flag to mark the root menu.
    * @param {?BaseMenu}          [options.parentMenu = null]                - The parent menu to this menu.
    * @param {string}             [options.hoverType = off]                  - The type of hoverability a menu has.
-   * @param {number}             [options.hoverDelay = 250]                 - The delay for opening and closing menus if the menu is hoverable (in miliseconds).
-   * @param {number}             [options.enterDelay = -1]                  - The delay for opening menus if the menu is hoverable (in miliseconds).
-   * @param {number}             [options.leaveDelay = -1]                  - The delay for closing menus if the menu is hoverable (in miliseconds).
+   * @param {number}             [options.hoverDelay = 250]                 - The delay for opening and closing menus if the menu is hoverable (in milliseconds).
+   * @param {number}             [options.enterDelay = -1]                  - The delay for opening menus if the menu is hoverable (in milliseconds).
+   * @param {number}             [options.leaveDelay = -1]                  - The delay for closing menus if the menu is hoverable (in milliseconds).
    * @param {?string}            [options.prefix = am-]                     - The prefix to use for CSS custom properties.
    */
   constructor({
@@ -535,7 +535,7 @@ class BaseMenu {
   }
 
   /**
-   * The duration time (in miliseconds) for the transition between open and closed states.
+   * The duration time (in milliseconds) for the transition between open and closed states.
    *
    * This functions differently for root vs. submenus.
    * Submenus will always inherit their root menu's transition duration.
@@ -553,7 +553,7 @@ class BaseMenu {
   }
 
   /**
-   * The duration time (in miliseconds) for the transition from closed to open states.
+   * The duration time (in milliseconds) for the transition from closed to open states.
    *
    * This functions differently for root vs. submenus.
    * Submenus will always inherit their root menu's openDuration.
@@ -575,7 +575,7 @@ class BaseMenu {
   }
 
   /**
-   * The duration time (in miliseconds) for the transition from open to closed states.
+   * The duration time (in milliseconds) for the transition from open to closed states.
    *
    * This functions differently for root vs. submenus.
    * Submenus will always inherit their root menu's closeDuration.
@@ -669,7 +669,7 @@ class BaseMenu {
   }
 
   /**
-   * The delay time (in miliseconds) used for pointerenter/pointerleave events to take place.
+   * The delay time (in milliseconds) used for pointerenter/pointerleave events to take place.
    *
    * This functions differently for root vs. submenus.
    * Submenus will always inherit their root menu's hover delay.
@@ -683,7 +683,7 @@ class BaseMenu {
   }
 
   /**
-   * The delay time (in miliseconds) used for pointerenter events to take place.
+   * The delay time (in milliseconds) used for pointerenter events to take place.
    *
    * This functions differently for root vs. submenus.
    * Submenus will always inherit their root menu's enter delay.
@@ -701,7 +701,7 @@ class BaseMenu {
   }
 
   /**
-   * The delay time (in miliseconds) used for pointerleave events to take place.
+   * The delay time (in milliseconds) used for pointerleave events to take place.
    *
    * This functions differently for root vs. submenus.
    * Submenus will always inherit their root menu's leave delay.

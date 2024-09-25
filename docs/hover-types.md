@@ -28,7 +28,7 @@ new DisclosureMenu({
 
 ### Treeviews and Hover On
 
-When using a treeview menu with hover **on**, `pointerenter` events are triggered as expected, however `pointerleave` events are handled differently. Leaving a menu item that is open will _not_ close that menu in a treeview. The only way a `pointerleave` event will close a menu item is if the root menu itself is left. This is to prevent a lot of visual confusion when hovering/unhover menu items in a treeview.
+When using a treeview menu with hover **on**, `pointerenter` events are triggered as expected, however `pointerleave` events are handled differently. Leaving a menu item that is open will _not_ close that menu in a treeview. The only way a `pointerleave` event will close a menu item is if the root menu itself is left. This is to prevent a lot of visual confusion when hovering/unhovering menu items in a treeview.
 
 ## Hover Dynamic
 
