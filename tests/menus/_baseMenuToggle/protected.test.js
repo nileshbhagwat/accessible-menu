@@ -11,6 +11,9 @@ vi.mock("../../../src/domHelpers.js");
 
 beforeEach(() => {
   document.body.innerHTML = twoLevel;
+
+  // Make sure to use fake timers.
+  vi.useFakeTimers({ shouldAdvanceTime: true });
 });
 
 afterEach(() => {
@@ -220,7 +223,6 @@ describe("BaseMenuToggle protected methods", () => {
         menuElement: document.querySelector("ul"),
         containerElement: document.querySelector("nav"),
         controllerElement: document.querySelector("button"),
-        transitionDuration: 0,
       });
       initializeMenu(menu);
 
@@ -230,6 +232,9 @@ describe("BaseMenuToggle protected methods", () => {
 
       // Expand the menu.
       menuToggle._expand();
+
+      // Advance the timers by the menu's transition duration.
+      vi.advanceTimersByTime(menu.transitionDuration);
 
       expect(spy).toHaveBeenCalledWith(
         menu.transitionClass,
@@ -424,7 +429,6 @@ describe("BaseMenuToggle protected methods", () => {
         menuElement: document.querySelector("ul"),
         containerElement: document.querySelector("nav"),
         controllerElement: document.querySelector("button"),
-        transitionDuration: 0,
       });
       initializeMenu(menu);
 
@@ -434,6 +438,9 @@ describe("BaseMenuToggle protected methods", () => {
 
       // Collapse the menu.
       menuToggle._collapse();
+
+      // Advance the timers by the menu's transition duration.
+      vi.advanceTimersByTime(menu.transitionDuration);
 
       expect(spy).toHaveBeenCalledWith(
         menu.transitionClass,

@@ -260,7 +260,7 @@ class BaseMenuToggle {
    * @param {boolean} [emit = true] - A toggle to emit the expand event once expanded.
    */
   _expand(emit = true) {
-    const { closeClass, openClass, transitionClass } =
+    const { closeClass, openClass, transitionClass, openDuration } =
       this.elements.controlledMenu;
 
     this.dom.toggle.setAttribute("aria-expanded", "true");
@@ -273,30 +273,27 @@ class BaseMenuToggle {
       addClass(transitionClass, this.elements.controlledMenu.dom.menu);
 
       requestAnimationFrame(() => {
-        if (closeClass !== "") {
-          removeClass(closeClass, this.elements.controlledMenu.dom.menu);
-        }
+        removeClass(closeClass, this.elements.controlledMenu.dom.menu);
 
         requestAnimationFrame(() => {
-          if (openClass !== "") {
-            addClass(openClass, this.elements.controlledMenu.dom.menu);
-          }
+          addClass(openClass, this.elements.controlledMenu.dom.menu);
 
           requestAnimationFrame(() => {
-            removeClass(transitionClass, this.elements.controlledMenu.dom.menu);
+            setTimeout(() => {
+              removeClass(
+                transitionClass,
+                this.elements.controlledMenu.dom.menu
+              );
+            }, openDuration);
           });
         });
       });
     } else {
       // Add the open class
-      if (openClass !== "") {
-        addClass(openClass, this.elements.controlledMenu.dom.menu);
-      }
+      addClass(openClass, this.elements.controlledMenu.dom.menu);
 
       // Remove the close class.
-      if (closeClass !== "") {
-        removeClass(closeClass, this.elements.controlledMenu.dom.menu);
-      }
+      removeClass(closeClass, this.elements.controlledMenu.dom.menu);
     }
 
     if (emit) {
@@ -322,7 +319,7 @@ class BaseMenuToggle {
    * @param {boolean} [emit = true] - A toggle to emit the collapse event once collapsed.
    */
   _collapse(emit = true) {
-    const { closeClass, openClass, transitionClass } =
+    const { closeClass, openClass, transitionClass, closeDuration } =
       this.elements.controlledMenu;
 
     this.dom.toggle.setAttribute("aria-expanded", "false");
@@ -334,30 +331,27 @@ class BaseMenuToggle {
       addClass(transitionClass, this.elements.controlledMenu.dom.menu);
 
       requestAnimationFrame(() => {
-        if (openClass !== "") {
-          removeClass(openClass, this.elements.controlledMenu.dom.menu);
-        }
+        removeClass(openClass, this.elements.controlledMenu.dom.menu);
 
         requestAnimationFrame(() => {
-          if (closeClass !== "") {
-            addClass(closeClass, this.elements.controlledMenu.dom.menu);
-          }
+          addClass(closeClass, this.elements.controlledMenu.dom.menu);
 
           requestAnimationFrame(() => {
-            removeClass(transitionClass, this.elements.controlledMenu.dom.menu);
+            setTimeout(() => {
+              removeClass(
+                transitionClass,
+                this.elements.controlledMenu.dom.menu
+              );
+            }, closeDuration);
           });
         });
       });
     } else {
       // Add the close class
-      if (closeClass !== "") {
-        addClass(closeClass, this.elements.controlledMenu.dom.menu);
-      }
+      addClass(closeClass, this.elements.controlledMenu.dom.menu);
 
       // Remove the open class.
-      if (openClass !== "") {
-        removeClass(openClass, this.elements.controlledMenu.dom.menu);
-      }
+      removeClass(openClass, this.elements.controlledMenu.dom.menu);
     }
 
     if (emit) {

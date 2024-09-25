@@ -72,6 +72,9 @@ class DisclosureMenu extends BaseMenu {
    * @param {?(string|string[])} [options.openClass = show]                 - The class to apply when a menu is "open".
    * @param {?(string|string[])} [options.closeClass = hide]                - The class to apply when a menu is "closed".
    * @param {?(string|string[])} [options.transitionClass = transitioning]  - The class to apply when a menu is transitioning between "open" and "closed" states.
+   * @param {number}             [options.transitionDuration = 250]         - The duration of the transition between "open" and "closed" states (in miliseconds).
+   * @param {boolean}            [options.openDuration = -1]                - The duration of the transition from "closed" to "open" states (in miliseconds).
+   * @param {boolean}            [options.closeDuration = -1]               - The duration of the transition from "open" to "closed" states (in miliseconds).
    * @param {boolean}            [options.isTopLevel = true]                - A flag to mark the root menu.
    * @param {?DisclosureMenu}    [options.parentMenu = null]                - The parent menu to this menu.
    * @param {string}             [options.hoverType = off]                  - The type of hoverability a menu has.
@@ -79,6 +82,7 @@ class DisclosureMenu extends BaseMenu {
    * @param {number}             [options.enterDelay = -1]                  - The delay for opening a menu if the menu is focusable (in miliseconds).
    * @param {number}             [options.leaveDelay = -1]                  - The delay for closing a menu if the menu is focusable (in miliseconds).
    * @param {boolean}            [options.optionalKeySupport = false]       - A flag to add optional keyboard support (Arrow keys, Home, and End) to the menu.
+   * @param {?string}            [options.prefix = am-]                     - The prefix to use for CSS custom properties.
    * @param {boolean}            [options.initialize = true]                - A flag to initialize the menu immediately upon creation.
    */
   constructor({
@@ -93,6 +97,9 @@ class DisclosureMenu extends BaseMenu {
     openClass = "show",
     closeClass = "hide",
     transitionClass = "transitioning",
+    transitionDuration = 250,
+    openDuration = -1,
+    closeDuration = -1,
     isTopLevel = true,
     parentMenu = null,
     hoverType = "off",
@@ -100,6 +107,7 @@ class DisclosureMenu extends BaseMenu {
     enterDelay = -1,
     leaveDelay = -1,
     optionalKeySupport = false,
+    prefix = "am-",
     initialize = true,
   }) {
     super({
@@ -114,12 +122,16 @@ class DisclosureMenu extends BaseMenu {
       openClass,
       closeClass,
       transitionClass,
+      transitionDuration,
+      openDuration,
+      closeDuration,
       isTopLevel,
       parentMenu,
       hoverType,
       hoverDelay,
       enterDelay,
       leaveDelay,
+      prefix,
     });
 
     // Set optional key support.

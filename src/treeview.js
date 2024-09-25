@@ -65,12 +65,14 @@ class Treeview extends BaseMenu {
    * @param {?(string|string[])} [options.openClass = show]                 - The class to apply when a menu is "open".
    * @param {?(string|string[])} [options.closeClass = hide]                - The class to apply when a menu is "closed".
    * @param {?(string|string[])} [options.transitionClass = transitioning]  - The class to apply when a menu is transitioning between "open" and "closed" states.
+   * @param {number}             [options.transitionDuration = 250]         - The duration of the transition between "open" and "closed" states (in miliseconds).
    * @param {boolean}            [options.isTopLevel = true]                - A flag to mark the root menu.
    * @param {?Treeview}          [options.parentMenu = null]                - The parent menu to this menu.
    * @param {string}             [options.hoverType = off]                  - The type of hoverability a menu has.
    * @param {number}             [options.hoverDelay = 250]                 - The delay for opening and closing menus if the menu is hoverable (in miliseconds).
    * @param {number}             [options.enterDelay = -1]                  - The delay for opening a menu if the menu is focusable (in miliseconds).
    * @param {number}             [options.leaveDelay = -1]                  - The delay for closing a menu if the menu is focusable (in miliseconds).
+   * @param {?string}            [options.prefix = am-]                     - The prefix to use for CSS custom properties.
    * @param {boolean}            [options.initialize = true]                - A flag to initialize the menu immediately upon creation.
    */
   constructor({
@@ -85,12 +87,14 @@ class Treeview extends BaseMenu {
     openClass = "show",
     closeClass = "hide",
     transitionClass = "transitioning",
+    transitionDuration = 250,
     isTopLevel = true,
     parentMenu = null,
     hoverType = "off",
     hoverDelay = 250,
     enterDelay = -1,
     leaveDelay = -1,
+    prefix = "am-",
     initialize = true,
   }) {
     super({
@@ -105,12 +109,14 @@ class Treeview extends BaseMenu {
       openClass,
       closeClass,
       transitionClass,
+      transitionDuration,
       isTopLevel,
       parentMenu,
       hoverType,
       hoverDelay,
       enterDelay,
       leaveDelay,
+      prefix,
     });
 
     if (initialize) {
