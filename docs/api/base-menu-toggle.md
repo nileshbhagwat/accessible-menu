@@ -15,7 +15,7 @@ new BaseMenuToggle({
 });
 ```
 
-The constructor populates the dom and elements properties. It will _not_ initialize the menu toggle; this is left to the subclasses to envoke.
+The constructor populates the dom and elements properties. It will _not_ initialize the menu toggle; this is left to the subclasses to evoke.
 
 ### Parameters {#constructor--parameters}
 
@@ -282,7 +282,7 @@ BaseMenuToggle.toggle();
 
 ### closeSiblings <badge type="tip" text="public" /> {#method--closesiblings}
 
-Closes all subling menus.
+Closes all sibling menus.
 
 ```js
 BaseMenuToggle.closeSiblings();

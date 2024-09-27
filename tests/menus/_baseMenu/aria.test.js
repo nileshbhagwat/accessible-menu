@@ -19,7 +19,7 @@ describe("BaseMenu", () => {
   });
   initializeMenu(menu);
 
-  // Test the root menu's aria-labbelledby attribute.
+  // Test the root menu's aria-labelledby attribute.
   it("should set the root menu's aria-labelledby attribute", () => {
     expect(menu.dom.menu.getAttribute("aria-labelledby")).toBe(
       menu.dom.controller.id

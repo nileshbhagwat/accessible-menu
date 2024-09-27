@@ -430,7 +430,7 @@ describe("TopLinkDisclosureMenu", () => {
         expect(menu.elements.submenuToggles[0].isOpen).toBeTruthy();
       });
     });
-    // Test when an open menu item's subling is unhovered and rehovered before the timeout it stays open.
+    // Test when an open menu item's sibling is unhovered and rehovered before the timeout it stays open.
     describe("when an open menu item's sibling is unhovered and rehovered before the timeout", () => {
       it("should keep the menu open", () => {
         // Create a new TopLinkDisclosureMenu instance for testing.
@@ -1200,7 +1200,7 @@ describe("TopLinkDisclosureMenu", () => {
           expect(spy).toHaveBeenCalled();
         });
       });
-      describe("if the menu item is not a submenu item and the menu is the root menu wtih an open submenu", () => {
+      describe("if the menu item is not a submenu item and the menu is the root menu with an open submenu", () => {
         // Test that the menu's closeChildren method is called after a delay.
         it("should call the menu's closeChildren method after a delay", () => {
           // Create a new TopLinkDisclosureMenu instance for testing.

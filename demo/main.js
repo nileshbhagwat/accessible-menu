@@ -47,7 +47,7 @@ const options = {
   hoverType: "off",
   hoverDelay: 250,
   enterDelay: -1,
-  leaveDelat: -1,
+  leaveDelay: -1,
   transitionClass: "transitioning",
   transitionDuration: 250,
   openDuration: -1,

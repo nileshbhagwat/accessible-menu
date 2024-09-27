@@ -370,7 +370,7 @@ describe("Treeview (custom arguments)", () => {
     }
   );
 
-  // Thest that the Treeview will initialize if isTopLevel is true.
+  // Test that the Treeview will initialize if isTopLevel is true.
   it("should initialize if isTopLevel is true", () => {
     // Test that the menu initializes.
     expect(() => {

@@ -168,7 +168,7 @@ describe("keyPress", () => {
     expect(keyPress(event)).toBe("Asterisk");
   });
 
-  // Test all character keys (A through Z both lowercase and captial).
+  // Test all character keys (A through Z both lowercase and capital).
   const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
   it.each(characters.split(""))(
     "should return Character when the %s key is pressed",

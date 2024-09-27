@@ -64,7 +64,7 @@ const menu = new Treeview({
 
 :::
 
-Accessible Menu will self-initialize once created adding the approriate roles, attributes, and keybindings.
+Accessible Menu will self-initialize once created adding the appropriate roles, attributes, and keybindings.
 
 ### Two-level Menu
 

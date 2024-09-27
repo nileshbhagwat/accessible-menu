@@ -57,15 +57,15 @@ The constructor will call [BaseMenu's constructor](./base-menu#constructor) with
 | options.openClass | `string`, `string[]`, `null` | The class to apply when a menu is "open". | `null` |
 | options.closeClass | `string`, `string[]`, `null` | The class to apply when a menu is "closed". | `null` |
 | options.transitionClass | `string`, `string[]`, `null` | The class to apply when a menu is transitioning between "open" and "closed" states. | `null` |
-| options.transitionDuration | `number` | The duration of the transition between "open" and "closed" states (in miliseconds). | `250` |
-| options.openDuration | `number` | The duration of the transition from "closed" to "open" states (in miliseconds). | `250` |
-| options.closeDuration | `number` | The duration of the transition from "open" to "closed" states (in miliseconds). | `250` |
+| options.transitionDuration | `number` | The duration of the transition between "open" and "closed" states (in milliseconds). | `250` |
+| options.openDuration | `number` | The duration of the transition from "closed" to "open" states (in milliseconds). | `250` |
+| options.closeDuration | `number` | The duration of the transition from "open" to "closed" states (in milliseconds). | `250` |
 | options.isTopLevel | `boolean` | A flag to mark the root menu. | `true` |
 | options.parentMenu | `Treeview`, `null` | The parent menu to this menu. | `null` |
 | options.hoverType | `string` | The type of hoverability a menu has. | `"off"` |
-| options.hoverDelay | `number` | The delay for opening and closing menus if the menu is hoverable (in miliseconds). | `250` |
-| options.enterDelay | `number` | The delay for opening a menu if the menu is focusable (in miliseconds). | `-1` |
-| options.leaveDelay | `number` | The delay for closing a menu if the menu is focusable (in miliseconds). | `-1` |
+| options.hoverDelay | `number` | The delay for opening and closing menus if the menu is hoverable (in milliseconds). | `250` |
+| options.enterDelay | `number` | The delay for opening a menu if the menu is focusable (in milliseconds). | `-1` |
+| options.leaveDelay | `number` | The delay for closing a menu if the menu is focusable (in milliseconds). | `-1` |
 | options.prefix | `string`, `null` | The prefix for the CSS custom properties. | `"am-"` |
 | options.initialize | `boolean` | A flag to initialize the menu immediately upon creation. | `true` |
 
@@ -149,13 +149,13 @@ Before executing anything, the event is checked to make sure the event wasn't tr
 
 This method will add the following behaviour:
 
-#### Hover Type "on" {#method--handlefover--hovertype-on}
+#### Hover Type "on" {#method--handlehover--hovertype-on}
 
 - When a `pointerenter` event triggers on any menu item the menu's [current child](#property--currentchild) value will change to that menu item.
 - When a `pointerenter` event triggers on a submenu item the [preview method](./base-menu-toggle#method--preview) for the submenu item's toggle will be called.
 - When a `pointerleave` event triggers on the menu itself the [closeChildren method](./base-menu#method--closechildren) will be called after a delay set by the menu's hover delay.
 
-#### Hover Type "dynamic" {#method--handlefover--hovertype-dynamic}
+#### Hover Type "dynamic" {#method--handlehover--hovertype-dynamic}
 
 - When a `pointerenter` event triggers on any menu item the menu's current child value will change to that menu item.
 - When a `pointerenter` event triggers on any menu item, and the menu's [focus state](#property--focusstate) is not "none", the menu item will be focused.
@@ -163,7 +163,7 @@ This method will add the following behaviour:
 - When a `pointerenter` event triggers on a non-submenu item, and a submenu is already open, the closeChildren method for the menu will be called.
 - When a `pointerenter` event triggers on a submenu item, and no submenu is open, no submenu-specific methods will be called.
 
-#### Hover Type "off" {#method--handlefover--hovertype-off}
+#### Hover Type "off" {#method--handlehover--hovertype-off}
 
 All `pointerenter` and `pointerleave` events are ignored.
 

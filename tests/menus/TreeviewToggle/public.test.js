@@ -46,7 +46,7 @@ describe("TreeviewToggle public methods", () => {
     });
   });
 
-  // Test TreeviewToggle closeSiblins().
+  // Test TreeviewToggle closeSiblings().
   describe("closeSiblings", () => {
     // Test that TreeviewToggle implements the BaseMenuToggle closeSiblings.
     it("should implement the BaseMenuToggle closeSiblings", () => {

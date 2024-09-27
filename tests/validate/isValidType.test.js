@@ -54,7 +54,7 @@ describe("isValidType", () => {
     expect(result.error).toBeInstanceOf(TypeError);
   });
 
-  // Test pasing a non-valid type.
+  // Test passing a non-valid type.
   it("should return false when checking for a non-valid type", () => {
     const string = "string";
     const result = isValidType(1, { string });

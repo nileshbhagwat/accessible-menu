@@ -35,7 +35,7 @@ new BaseMenu({
 });
 ```
 
-The constructor populates the dom, selector, CSS class, and hover related properties. It will _not_ initialize the menu automatically; this is left to the subclasses to envoke.
+The constructor populates the dom, selector, CSS class, and hover related properties. It will _not_ initialize the menu automatically; this is left to the subclasses to evoke.
 
 ### Parameters {#constructor--parameters}
 
@@ -53,15 +53,15 @@ The constructor populates the dom, selector, CSS class, and hover related proper
 | options.openClass | `string`, `string[]`, `null` | The class to apply when a menu is "open". | `"show"` |
 | options.closeClass | `string`, `string[]`, `null` | The class to apply when a menu is "closed". | `"hide"` |
 | options.transitionClass | `string`, `string[]`, `null` | The class to apply when a menu is transitioning between "open" and "closed" states. | `transitioning` |
-| options.transitionDuration | `number` | The duration of the transition between "open" and "closed" states (in miliseconds). | `250` |
-| options.openDuration | `number` | The duration of the transition from "closed" to "open" states (in miliseconds). | `250` |
-| options.closeDuration | `number` | The duration of the transition from "open" to "closed" states (in miliseconds). | `250` |
+| options.transitionDuration | `number` | The duration of the transition between "open" and "closed" states (in milliseconds). | `250` |
+| options.openDuration | `number` | The duration of the transition from "closed" to "open" states (in milliseconds). | `250` |
+| options.closeDuration | `number` | The duration of the transition from "open" to "closed" states (in milliseconds). | `250` |
 | options.isTopLevel | `boolean` | A flag to mark the root menu. | `false` |
 | options.parentMenu | `BaseMenu`, `null` | The parent menu to this menu. | `null` |
 | options.hoverType | `string` | The type of hoverability a menu has. | `"off"` |
-| options.hoverDelay | `number` | The delay for opening and closing menus if the menu is hoverable (in miliseconds). | `250` |
-| options.enterDelay | `number` | The delay for opening menus if the menu is hoverable (in miliseconds). | `-1` |
-| options.leaveDelay | `number` | The delay for closing menus if the menu is hoverable (in miliseconds). | `-1` |
+| options.hoverDelay | `number` | The delay for opening and closing menus if the menu is hoverable (in milliseconds). | `250` |
+| options.enterDelay | `number` | The delay for opening menus if the menu is hoverable (in milliseconds). | `-1` |
+| options.leaveDelay | `number` | The delay for closing menus if the menu is hoverable (in milliseconds). | `-1` |
 | options.prefix | `string`, `null` | The prefix for the CSS custom properties. | `"am-"` |
 
 ## Initialize
@@ -225,7 +225,7 @@ BaseMenu._transitionClass; // Default: `"transitioning`"
 
 ### _transitionDuration <badge type="warning" text="protected" /> {#property--transitionduration}
 
-The duration time (in miliseconds) for the transition between open and closed states.
+The duration time (in milliseconds) for the transition between open and closed states.
 
 ```js
 BaseMenu._transitionDuration; // Default: `250`.
@@ -237,7 +237,7 @@ BaseMenu._transitionDuration; // Default: `250`.
 
 ### _openDuration <badge type="warning" text="protected" /> {#property--openduration}
 
-The duration time (in miliseconds) for the transition from closed to open states.
+The duration time (in milliseconds) for the transition from closed to open states.
 
 ```js
 BaseMenu._openDuration; // Default: `-1`.
@@ -249,7 +249,7 @@ BaseMenu._openDuration; // Default: `-1`.
 
 ### _closeDuration <badge type="warning" text="protected" /> {#property--closeduration}
 
-The duration time (in miliseconds) for the transition from open to closed states.
+The duration time (in milliseconds) for the transition from open to closed states.
 
 ```js
 BaseMenu._closeDuration; // Default: `-1`.
@@ -329,7 +329,7 @@ You can read more about [supported hover types](../hover-types) in the docs.
 
 ### _hoverDelay <badge type="warning" text="protected" /> {#property--hoverdelay}
 
-The delay time (in miliseconds) used for pointerenter/pointerleave events to take place.
+The delay time (in milliseconds) used for pointerenter/pointerleave events to take place.
 
 ```js
 BaseMenu._hoverDelay; // Default: `250`.
@@ -341,7 +341,7 @@ BaseMenu._hoverDelay; // Default: `250`.
 
 ### _enterDelay <badge type="warning" text="protected" /> {#property--enterdelay}
 
-The delay time (in miliseconds) used for pointerenter events to take place.
+The delay time (in milliseconds) used for pointerenter events to take place.
 
 ```js
 BaseMenu._enterDelay; // Default: `-1`.
@@ -353,7 +353,7 @@ BaseMenu._enterDelay; // Default: `-1`.
 
 ### _leaveDelay <badge type="warning" text="protected" /> {#property--leavedelay}
 
-The delay time (in miliseconds) used for pointerleave events to take place.
+The delay time (in milliseconds) used for pointerleave events to take place.
 
 ```js
 BaseMenu._leaveDelay; // Default: `-1`.
@@ -527,7 +527,7 @@ See [_transitionClass](#property--transitionclass) for more information.
 
 ### transitionDuration {#getter-setter--transitionduration}
 
-The duration time (in miliseconds) for the transition between open and closed states.
+The duration time (in milliseconds) for the transition between open and closed states.
 
 ::: code-group
 
@@ -549,7 +549,7 @@ See [_transitionDuration](#property--transitionduration) for more information.
 
 ### openDuration {#getter-setter--openduration}
 
-The duration time (in miliseconds) for the transition from closed to open states.
+The duration time (in milliseconds) for the transition from closed to open states.
 
 ::: code-group
 
@@ -571,7 +571,7 @@ See [_openDuration](#property--openduration) for more information.
 
 ### closeDuration {#getter-setter--closeduration}
 
-The duration time (in miliseconds) for the transition from open to closed states.
+The duration time (in milliseconds) for the transition from open to closed states.
 
 ::: code-group
 
@@ -695,7 +695,7 @@ See [_hoverType](#property--hovertype) for more information.
 
 ### hoverDelay {#getter-setter--hoverdelay}
 
-The delay time (in miliseconds) used for pointerenter/pointerleave events to take place.
+The delay time (in milliseconds) used for pointerenter/pointerleave events to take place.
 
 ::: code-group
 
@@ -715,7 +715,7 @@ See [_hoverDelay](#property--hoverdelay) for more information.
 
 ### enterDelay {#getter-setter--enterdelay}
 
-The delay time (in miliseconds) used for pointerenter events to take place.
+The delay time (in milliseconds) used for pointerenter events to take place.
 
 ::: code-group
 
@@ -737,7 +737,7 @@ See [_enterDelay](#property--enterdelay) for more information.
 
 ### leaveDelay {#getter-setter--leavedelay}
 
-The delay time (in miliseconds) used for pointerleave events to take place.
+The delay time (in milliseconds) used for pointerleave events to take place.
 
 ::: code-group
 
@@ -972,13 +972,13 @@ Before executing anything, the event is checked to make sure the event wasn't tr
 
 This method will add the following behaviour:
 
-#### Hover Type "on" {#method--handlefover--hovertype-on}
+#### Hover Type "on" {#method--handlehover--hovertype-on}
 
 - When a `pointerenter` event triggers on any menu item the menu's [current child](#property--currentchild) value will change to that menu item.
 - When a `pointerenter` event triggers on a submenu item the [preview method](./base-menu-toggle#method--preview) for the submenu item's toggle will be called.
 - When a `pointerleave` event triggers on an open submenu item the [close method](./base-menu-toggle#method--close) for the submenu item's toggle will be called after a delay set by the menu's hover delay.
 
-#### Hover Type "dynamic" {#method--handlefover--hovertype-dynamic}
+#### Hover Type "dynamic" {#method--handlehover--hovertype-dynamic}
 
 - When a `pointerenter` event triggers on any menu item the menu's current child value will change to that menu item.
 - When a `pointerenter` event triggers on any menu item, and the menu's [focus state](#property--focusstate) is not "none", the menu item will be focused.
@@ -988,7 +988,7 @@ This method will add the following behaviour:
 - When a `pointerleave` event triggers on an open submenu item that is not a root-level submenu item the close method for the submenu item's toggle will be called and the submenu item will be focused after a delay set by the menu's hover delay.
 - When a `pointerleave` event triggers on an open submenu item that is a root-level submenu item no submenu-specific methods will be called.
 
-#### Hover Type "off" {#method--handlefover--hovertype-off}
+#### Hover Type "off" {#method--handlehover--hovertype-off}
 
 All `pointerenter` and `pointerleave` events are ignored.
 
@@ -1000,7 +1000,7 @@ Handles keydown events throughout the menu for proper menu use.
 BaseMenu._handleKeydown();
 ```
 
-This method exists to assit the [_handleKeyup](#method--handlekeyup) method.
+This method exists to assist the [_handleKeyup](#method--handlekeyup) method.
 
 This method will do the following:
 

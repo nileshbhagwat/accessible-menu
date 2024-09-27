@@ -58,15 +58,15 @@ The constructor will call [BaseMenu's constructor](./base-menu#constructor) with
 | options.openClass | `string`, `string[]`, `null` | The class to apply when a menu is "open". | `"show"` |
 | options.closeClass | `string`, `string[]`, `null` | The class to apply when a menu is "closed". | `"hide"` |
 | options.transitionClass | `string`, `string[]`, `null` | The class to apply when a menu is transitioning between "open" and "closed" states. | `transitioning` |
-| options.transitionDuration | `number` | The duration of the transition between "open" and "closed" states (in miliseconds). | `250` |
-| options.openDuration | `number` | The duration of the transition from "closed" to "open" states (in miliseconds). | `250` |
-| options.closeDuration | `number` | The duration of the transition from "open" to "closed" states (in miliseconds). | `250` |
+| options.transitionDuration | `number` | The duration of the transition between "open" and "closed" states (in milliseconds). | `250` |
+| options.openDuration | `number` | The duration of the transition from "closed" to "open" states (in milliseconds). | `250` |
+| options.closeDuration | `number` | The duration of the transition from "open" to "closed" states (in milliseconds). | `250` |
 | options.isTopLevel | `boolean` | A flag to mark the root menu. | `true` |
 | options.parentMenu | `DisclosureMenu`, `null` | The parent menu to this menu. | `null` |
 | options.hoverType | `string` | The type of hoverability a menu has. | `"off"` |
-| options.hoverDelay | `number` | The delay for opening and closing menus if the menu is hoverable (in miliseconds). | `250` |
-| options.enterDelay | `number` | The delay for opening a menu if the menu is focusable (in miliseconds). | `-1` |
-| options.leaveDelay | `number` | The delay for closing a menu if the menu is focusable (in miliseconds). | `-1` |
+| options.hoverDelay | `number` | The delay for opening and closing menus if the menu is hoverable (in milliseconds). | `250` |
+| options.enterDelay | `number` | The delay for opening a menu if the menu is focusable (in milliseconds). | `-1` |
+| options.leaveDelay | `number` | The delay for closing a menu if the menu is focusable (in milliseconds). | `-1` |
 | options.optionalKeySupport | `boolean` | A flag to add optional keyboard support (Arrow keys, Home, and End) to the menu. | `false` |
 | options.prefix | `string`, `null` | The prefix for the CSS custom properties. | `"am-"` |
 | options.initialize | `boolean` | A flag to initialize the menu immediately upon creation. | `true` |
@@ -237,7 +237,7 @@ DisclosureMenu._handleKeyup();
 
 Adds all `keyup` listeners from [BaseMenu's _handleKeyup method](./base-menu#method--handlekeyup).
 
-Adds the following keybindings (explanations are taken from the [WAI ARIA Pracitices Example Disclosure for Navigation Menus](https://www.w3.org/TR/wai-aria-practices-1.2/examples/disclosure/disclosure-navigation.html#kbd_label):
+Adds the following keybindings (explanations are taken from the [WAI ARIA Practices Example Disclosure for Navigation Menus](https://www.w3.org/TR/wai-aria-practices-1.2/examples/disclosure/disclosure-navigation.html#kbd_label):
 
 | Key | Function |
 | --- | --- |

@@ -99,7 +99,7 @@ new DisclosureMenu({
 
 ## Transition Duration {#transition-duration}
 
-When a menu has a transition class, the `transitionDuration` option can be used to set the duration (in miliseconds) of the transition, which will in turn set a timeout before finalizing the closing of a menu.
+When a menu has a transition class, the `transitionDuration` option can be used to set the duration (in milliseconds) of the transition, which will in turn set a timeout before finalizing the closing of a menu.
 
 The reason for this is to allow for the menu's closing transition to be animated. Most of the time, when a menu is closed it will have the CSS property `display` set to `none`, which causes issues when trying to animate between states. Setting a timeout before the transition class is removed from the menu, allows you to transition between something like `opacity` or `transform` before the menu is visually removed.
 

@@ -287,7 +287,7 @@ describe("TopLinkDisclosureMenuToggle public methods", () => {
     });
   });
 
-  // Test TopLinkDisclosureMenuToggle closeSiblins().
+  // Test TopLinkDisclosureMenuToggle closeSiblings().
   describe("closeSiblings", () => {
     // Test that TopLinkDisclosureMenuToggle implements the BaseMenuToggle closeSiblings.
     it("should implement the BaseMenuToggle closeSiblings", () => {
